@@ -10,7 +10,7 @@ if (!empty($_SESSION['ADMIN'])) {
 	header('location:login.php');
 }
 // panggil file
-require 'panggil.php';
+require '../api/panggil.php';
 
 // tampilkan form edit
 $idGet = strip_tags($_GET['id']);
@@ -22,12 +22,12 @@ $hasil = $proses->tampil_data_id('produk', 'id', $idGet);
 
 <head>
 	<title>Edit Pengguna</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<?php include "../layouts/head.php"; ?>
 </head>
 
 <body style="background:#586df5;">
 	<div class="container">
+		<?php include "../layouts/menu.php"; ?>
 		<br />
 		<span style="color:#fff" ;>Selamat Datang, <?php echo $sesi['nama_pengguna']; ?></span>
 		<div class="float-right">
@@ -47,6 +47,10 @@ $hasil = $proses->tampil_data_id('produk', 'id', $idGet);
 						<!-- form berfungsi mengirimkan data input 
 						dengan method post ke proses crud dengan paramater get aksi edit -->
 						<form action="<?= $abs; ?>/produk/crud.php?aksi=edit" method="POST">
+							<div class="form-group">
+								<label>Kategori</label>
+								<input type="text" value="<?php echo $hasil['idkat']; ?>" class="form-control" name="idkat">
+							</div>
 							<div class="form-group">
 								<label>Nama </label>
 								<input type="text" value="<?php echo $hasil['nama_pro']; ?>" class="form-control" name="nama_pro">

@@ -10,7 +10,7 @@ if (!empty($_SESSION['ADMIN'])) {
 	header('location:login.php');
 }
 // panggil file
-require 'panggil.php';
+require '../api/panggil.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -18,12 +18,12 @@ require 'panggil.php';
 
 <head>
 	<title>Tambah Pengguna</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<?php include "../layouts/head.php"; ?>
 </head>
 
 <body style="background:#586df5;">
 	<div class="container">
+		<?php include "../layouts/menu.php"; ?>
 		<br />
 		<span style="color:#fff" ;>Selamat Datang, <?php echo $sesi['nama_pengguna']; ?></span>
 		<div class="float-right">
@@ -40,11 +40,11 @@ require 'panggil.php';
 						<h4 class="card-title">Tambah Produk</h4>
 					</div>
 					<div class="card-body">
-						<form action="crud.php?aksi=tambah" method="POST">
-							<!-- <div class="form-group">
+						<form action="<?= $abs; ?>/produk/crud.php?aksi=tambah" method="POST">
+							<div class="form-group">
 								<label>Kategori</label>
 								<input type="text" value="" class="form-control" name="idkat">
-							</div> -->
+							</div>
 							<div class="form-group">
 								<label>Nama </label>
 								<input type="text" value="" class="form-control" name="nama_pro">

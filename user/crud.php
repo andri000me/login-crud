@@ -1,5 +1,5 @@
 <?php
-    require 'panggil.php';
+    require '../api/panggil.php';
 
     // proses tambah
     if(!empty($_GET['aksi'] == 'tambah'))

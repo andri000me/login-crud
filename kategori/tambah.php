@@ -10,7 +10,7 @@ if (!empty($_SESSION['ADMIN'])) {
 	header('location:login.php');
 }
 // panggil file
-require 'panggil.php';
+require '../api/panggil.php';
 ?>
 
 <!DOCTYPE HTML>

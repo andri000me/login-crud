@@ -4,7 +4,7 @@ if (!empty($_SESSION)) {
 } else {
 	session_start();
 }
-require 'panggil.php';
+require '../api/panggil.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -12,20 +12,7 @@ require 'panggil.php';
 
 <head>
 	<title>Tutorial Membuat CRUD PHP OOP dengan PDO MySQL</title>
-	<!-- BOOTSTRAP 4-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-	<!-- DATATABLES BS 4-->
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<!-- jQuery -->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-	<!-- DATATABLES BS 4-->
-	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	<!-- BOOTSTRAP 4-->
-	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
+	<?php include "../layouts/head.php"; ?>
 </head>
 
 <body style="background:#586df5;">
@@ -60,7 +47,7 @@ require 'panggil.php';
 								<tbody>
 									<?php
 									$no = 1;
-									$hasil = $proses->tampil_data('produk');
+									$hasil = $proses->tampil_data('produk', 'id');
 									foreach ($hasil as $isi) {
 									?>
 										<tr>
@@ -86,9 +73,9 @@ require 'panggil.php';
 				<?php } else { ?>
 					<br />
 					<div class="alert alert-info">
-						<h3> Maaf Anda Belum Dapat Akses CRUD, Silahkan Login Terlebih Dahulu !</h3>
+						<h3>Your session has been expired</h3>
 						<hr />
-						<p><a href="<?= $abs; ?>/login.php">Login Disini</a></p>
+						<p><a href="../login.php">Please login here</a></p>
 					</div>
 				<?php } ?>
 			</div>
