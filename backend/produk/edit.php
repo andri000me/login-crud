@@ -10,7 +10,7 @@ if (!empty($_SESSION['ADMIN'])) {
 	header('location:login.php');
 }
 // panggil file
-require '../api/panggil.php';
+require '../../api/panggil.php';
 
 // tampilkan form edit
 $idGet = strip_tags($_GET['id']);
@@ -46,7 +46,7 @@ $hasil = $proses->tampil_data_id('produk', 'id', $idGet);
 					<div class="card-body">
 						<!-- form berfungsi mengirimkan data input 
 						dengan method post ke proses crud dengan paramater get aksi edit -->
-						<form action="<?= $abs; ?>/produk/crud.php?aksi=edit" method="POST">
+						<form action="<?= $abs; ?>/backend/produk/crud.php?aksi=edit" method="POST">
 							<div class="form-group">
 								<label>Kategori</label>
 								<input type="text" value="<?php echo $hasil['idkat']; ?>" class="form-control" name="idkat">

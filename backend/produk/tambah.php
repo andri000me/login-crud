@@ -10,7 +10,7 @@ if (!empty($_SESSION['ADMIN'])) {
 	header('location:login.php');
 }
 // panggil file
-require '../api/panggil.php';
+require '../../api/panggil.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -40,7 +40,7 @@ require '../api/panggil.php';
 						<h4 class="card-title">Tambah Produk</h4>
 					</div>
 					<div class="card-body">
-						<form action="<?= $abs; ?>/produk/crud.php?aksi=tambah" method="POST">
+						<form action="<?= $abs; ?>/backend/produk/crud.php?aksi=tambah" method="POST">
 							<div class="form-group">
 								<label>Kategori</label>
 								<input type="text" value="" class="form-control" name="idkat">

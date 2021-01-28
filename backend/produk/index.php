@@ -4,7 +4,7 @@ if (!empty($_SESSION)) {
 } else {
 	session_start();
 }
-require '../api/panggil.php';
+require '../../api/panggil.php';
 ?>
 
 <!DOCTYPE HTML>

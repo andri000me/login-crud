@@ -1,5 +1,5 @@
 <?php
-require '../api/panggil.php';
+require '../../api/panggil.php';
 
 // proses tambah
 if (!empty($_GET['aksi'] == 'tambah')) {
@@ -17,7 +17,7 @@ if (!empty($_GET['aksi'] == 'tambah')) {
 		'acak1'  => $acak1,
 	);
 	$proses->tambah_data($tabel, $data);
-	echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/produk"</script>';
+	echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/backend/produk"</script>';
 }
 
 // proses edit
@@ -45,7 +45,7 @@ if (!empty($_GET['aksi'] == 'edit')) {
 	$where = 'id';
 	$id = strip_tags($_POST['id']);
 	$proses->edit_data($tabel, $data, $where, $id);
-	echo '<script>alert("Edit Data Berhasil");window.location="' . $abs . '/produk"</script>';
+	echo '<script>alert("Edit Data Berhasil");window.location="' . $abs . '/backend/produk"</script>';
 }
 
 // hapus data
@@ -54,5 +54,5 @@ if (!empty($_GET['aksi'] == 'hapus')) {
 	$where = 'id';
 	$id = strip_tags($_GET['id']);
 	$proses->hapus_data($tabel, $where, $id);
-	echo '<script>alert("Hapus Data Berhasil");window.location="' . $abs . '/produk"</script>';
+	echo '<script>alert("Hapus Data Berhasil");window.location="' . $abs . '/backend/produk"</script>';
 }
