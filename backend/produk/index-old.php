@@ -33,17 +33,39 @@ require '../../api/panggil.php';
 							<h4 class="card-title">Data Produk</h4>
 						</div>
 						<div class="card-body">
-							<table id="contoh" class="table table-striped table-bordered" cellspacing="0" width="100%">
+							<table class="table table-hover table-bordered" id="mytable" style="margin-top: 10px">
 								<thead>
 									<tr>
-										<th>Provinsi</th>
-										<th>Kabupaten</th>
-										<th>Kecamatan</th>
-										<th>Aksi</th>
+										<th width="50px">No</th>
+										<th>Nama</th>
+										<th>Kategori</th>
+										<!-- <th>Keterangan</th> -->
+										<!-- <th>Gambar</th> -->
+										<th style="text-align: center;">Aksi</th>
 									</tr>
 								</thead>
 								<tbody>
-
+									<?php
+									$no = 1;
+									$hasil = $proses->tampil_data('produk', 'id');
+									foreach ($hasil as $isi) {
+									?>
+										<tr>
+											<td><?php echo $no; ?></td>
+											<td><?php echo $isi['nama_pro'] ?></td>
+											<td><?php echo $isi['idkat'] ?></td>
+											<!-- <td><?php echo $isi['ket']; ?></td> -->
+											<!-- <td><?php echo $isi['acak1']; ?></td> -->
+											<td style="text-align: center;">
+												<a href="edit.php?id=<?php echo $isi['id']; ?>" class="btn btn-success btn-md">
+													<span class="fa fa-edit"></span></a>
+												<a onclick="return confirm('Apakah yakin data akan di hapus?')" href="crud.php?aksi=hapus&id=<?php echo $isi['id']; ?>" class="btn btn-danger btn-md"><span class="fa fa-trash"></span></a>
+											</td>
+										</tr>
+									<?php
+										$no++;
+									}
+									?>
 								</tbody>
 							</table>
 						</div>
@@ -59,32 +81,8 @@ require '../../api/panggil.php';
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		$("#contoh").dataTable({
-			'bProcessing': true,
-			'bServerSide': true,
-			//disable order dan searching pada tombol aksi
-			"columnDefs": [{
-				"targets": [3],
-				"orderable": false,
-				"searchable": false
-
-			}],
-			"ajax": {
-				url: "data.php",
-				type: "post", // method  , by default get
-				//bisa kirim data ke server
-				/*data: function ( d ) {
-				  
-				          d.jurusan = "3223";
-				      },*/
-				error: function(xhr, error, thrown) {
-					console.log(xhr);
-
-				}
-			},
-
-		});
+	<script>
+		$('#mytable').dataTable();
 	</script>
 </body>
 
