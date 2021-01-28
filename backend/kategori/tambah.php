@@ -10,18 +10,14 @@ if (!empty($_SESSION['ADMIN'])) {
 	header('location:login.php');
 }
 // panggil file
-require '../api/panggil.php';
-
-// tampilkan form edit
-$idGet = strip_tags($_GET['idkat']);
-$hasil = $proses->tampil_data_id('kategori', 'idkat', $idGet);
+require '../../api/panggil.php';
 ?>
 
 <!DOCTYPE HTML>
 <html>
 
 <head>
-	<title>Edit Pengguna</title>
+	<title>Tambah Pengguna</title>
 	<?php include "../layouts/head.php"; ?>
 </head>
 
@@ -41,26 +37,23 @@ $hasil = $proses->tampil_data_id('kategori', 'idkat', $idGet);
 				<br />
 				<div class="card">
 					<div class="card-header">
-						<h4 class="card-title">Edit Kategori - <?php echo $hasil['nama']; ?></h4>
+						<h4 class="card-title">Tambah Kategori</h4>
 					</div>
 					<div class="card-body">
-						<!-- form berfungsi mengirimkan data input 
-						dengan method post ke proses crud dengan paramater get aksi edit -->
-						<form action="crud.php?aksi=edit" method="POST">
+						<form action="crud.php?aksi=tambah" method="POST">
 							<div class="form-group">
 								<label>Nama </label>
-								<input type="text" value="<?php echo $hasil['nama']; ?>" class="form-control" name="nama">
-								<input type="hidden" value="<?php echo $hasil['idkat']; ?>" class="form-control" name="idkat">
+								<input type="text" value="" class="form-control" name="nama">
 							</div>
 							<div class="form-group">
 								<label>Keterangan</label>
-								<textarea name="ket" class="form-control"><?php echo $hasil['ket']; ?></textarea>
+								<textarea name="ket" class="form-control"></textarea>
 							</div>
 							<div class="form-group">
 								<label>Gambar</label>
-								<input type="harga" value="<?php echo $hasil['gambar']; ?>" class="form-control" name="gambar">
+								<input type="harga" value="" class="form-control" name="gambar">
 							</div>
-							<button class="btn btn-primary btn-md" name="create"><i class="fa fa-edit"> </i> Edit Data</button>
+							<button class="btn btn-primary btn-md" name="create"><i class="fa fa-plus"> </i> Tambah Data</button>
 						</form>
 					</div>
 				</div>

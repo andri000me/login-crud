@@ -1,5 +1,5 @@
 <?php
-require '../api/panggil.php';
+require '../../api/panggil.php';
 
 // proses tambah
 if (!empty($_GET['aksi'] == 'tambah')) {
@@ -15,7 +15,8 @@ if (!empty($_GET['aksi'] == 'tambah')) {
 		'gambar'  => $gambar,
 	);
 	$proses->tambah_data($tabel, $data);
-	echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/kategori"</script>';
+	echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/backend/kategori"</script>';
+	header('location: '. $abs . '/backend/kategori');
 }
 
 // proses edit
@@ -39,7 +40,8 @@ if (!empty($_GET['aksi'] == 'edit')) {
 	$where = 'idkat';
 	$id = strip_tags($_POST['idkat']);
 	$proses->edit_data($tabel, $data, $where, $id);
-	echo '<script>alert("Edit Data Berhasil");window.location="' . $abs . '/kategori"</script>';
+	echo '<script>alert("Edit Data Berhasil");window.location="' . $abs . '/backend/kategori"</script>';
+	header('location: ' . $abs . '/backend/kategori');
 }
 
 // hapus data
@@ -48,5 +50,6 @@ if (!empty($_GET['aksi'] == 'hapus')) {
 	$where = 'idkat';
 	$id = strip_tags($_GET['idkat']);
 	$proses->hapus_data($tabel, $where, $id);
-	echo '<script>alert("Hapus Data Berhasil");window.location="' . $abs . '/kategori"</script>';
+	echo '<script>alert("Hapus Data Berhasil");window.location="' . $abs . '/backend/kategori"</script>';
+	header('location: ' . $abs . '/backend/kategori');
 }

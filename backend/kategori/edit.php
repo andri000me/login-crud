@@ -10,20 +10,24 @@ if (!empty($_SESSION['ADMIN'])) {
 	header('location:login.php');
 }
 // panggil file
-require '../api/panggil.php';
+require '../../api/panggil.php';
+
+// tampilkan form edit
+$idGet = strip_tags($_GET['idkat']);
+$hasil = $proses->tampil_data_id('kategori', 'idkat', $idGet);
 ?>
 
 <!DOCTYPE HTML>
 <html>
 
 <head>
-	<title>Tambah Pengguna</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Edit Pengguna</title>
+	<?php include "../layouts/head.php"; ?>
 </head>
 
 <body style="background:#586df5;">
 	<div class="container">
+		<?php include "../layouts/menu.php"; ?>
 		<br />
 		<span style="color:#fff" ;>Selamat Datang, <?php echo $sesi['nama_pengguna']; ?></span>
 		<div class="float-right">
@@ -37,23 +41,26 @@ require '../api/panggil.php';
 				<br />
 				<div class="card">
 					<div class="card-header">
-						<h4 class="card-title">Tambah Kategori</h4>
+						<h4 class="card-title">Edit Kategori - <?php echo $hasil['nama']; ?></h4>
 					</div>
 					<div class="card-body">
-						<form action="crud.php?aksi=tambah" method="POST">
+						<!-- form berfungsi mengirimkan data input 
+						dengan method post ke proses crud dengan paramater get aksi edit -->
+						<form action="<?=$abs;?>/backend/kategori/crud.php?aksi=edit" method="POST">
 							<div class="form-group">
 								<label>Nama </label>
-								<input type="text" value="" class="form-control" name="nama">
+								<input type="text" value="<?php echo $hasil['nama']; ?>" class="form-control" name="nama">
+								<input type="hidden" value="<?php echo $hasil['idkat']; ?>" class="form-control" name="idkat">
 							</div>
 							<div class="form-group">
 								<label>Keterangan</label>
-								<textarea name="ket" class="form-control"></textarea>
+								<textarea name="ket" class="form-control"><?php echo $hasil['ket']; ?></textarea>
 							</div>
 							<div class="form-group">
 								<label>Gambar</label>
-								<input type="harga" value="" class="form-control" name="gambar">
+								<input type="harga" value="<?php echo $hasil['gambar']; ?>" class="form-control" name="gambar">
 							</div>
-							<button class="btn btn-primary btn-md" name="create"><i class="fa fa-plus"> </i> Tambah Data</button>
+							<button class="btn btn-primary btn-md" name="create"><i class="fa fa-edit"> </i> Edit Data</button>
 						</form>
 					</div>
 				</div>

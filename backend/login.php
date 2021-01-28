@@ -67,7 +67,7 @@ if (!empty($_SESSION)) {
 		</div>
 		<script>
 			// notifikasi gagal di hide
-			<?php if (empty($_GET['get'])) { ?>
+			<?php if (empty(urldecode($_GET['get']))) { ?>
 				$("#notifikasi").hide();
 			<?php } ?>
 			var logingagal = function() {

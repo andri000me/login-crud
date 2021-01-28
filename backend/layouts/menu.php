@@ -17,11 +17,11 @@
           Main Menu
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?= $abs; ?>/user">User</a>
-          <a class="dropdown-item" href="<?= $abs; ?>/kategori">Kategori</a>
-          <a class="dropdown-item" href="<?= $abs; ?>/produk">Produk</a>
+          <a class="dropdown-item" href="<?= $abs; ?>/backend/user">User</a>
+          <a class="dropdown-item" href="<?= $abs; ?>/backend/kategori">Kategori</a>
+          <a class="dropdown-item" href="<?= $abs; ?>/backend/produk">Produk</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="<?= $abs; ?>/prodkat">Prodkat</a>
+          <a class="dropdown-item" href="<?= $abs; ?>/backend/news">News</a>
         </div>
       </li>
       <li class="nav-item">

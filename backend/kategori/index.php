@@ -4,7 +4,7 @@ if (!empty($_SESSION)) {
 } else {
 	session_start();
 }
-require '../api/panggil.php';
+require '../../api/panggil.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -55,7 +55,7 @@ require '../api/panggil.php';
 											<!-- <td><?php echo $isi['ket']; ?></td> -->
 											<td><?php echo $isi['gambar']; ?></td>
 											<td style="text-align: center;">
-												<a href="edit.php?idkat=<?php echo $isi['idkat']; ?>" class="btn btn-success btn-md">
+												<a href="<?=$abs;?>/backend/kategori/edit.php?idkat=<?php echo $isi['idkat']; ?>" class="btn btn-success btn-md">
 													<span class="fa fa-edit"></span></a>
 												<a onclick="return confirm('Apakah yakin data akan di hapus?')" href="crud.php?aksi=hapus&idkat=<?php echo $isi['idkat']; ?>" class="btn btn-danger btn-md"><span class="fa fa-trash"></span></a>
 											</td>

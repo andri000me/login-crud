@@ -11,13 +11,15 @@
         $result = $proses->proses_login($user,$pass);
         if($result == 'gagal')
         {
-            echo "<script>window.location='../login.php?get=gagal';</script>";
+        header('location: ' . $abs . '/backend/login.php?get='.urlencode('gagal maning, gagal maning son'));
+            // echo "<script>window.location='../login.php?get=gagal';</script>";
         }else{
             // status yang diberikan 
             session_start();
             $_SESSION['ADMIN'] = $result;
-            // status yang diberikan 
-            echo "<script>window.location='".$abs."/web/user';</script>";
+            // status yang diberikan
+            header('location: '.$abs.'/backend/user');
+            // echo "<script>window.location='".$abs."/backend/user';</script>";
         }
     }
 ?>
