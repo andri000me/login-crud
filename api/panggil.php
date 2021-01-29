@@ -14,5 +14,5 @@
     $id = $_SESSION['ADMIN']['id_login'];
     $sesi = $proses->tampil_data_id('tbl_user','id_login',$id);
 
-    $abs = 'http://localhost/login-crud';
+    $abs = 'https://localhost/login-crud';
 ?>
