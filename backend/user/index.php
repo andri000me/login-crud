@@ -33,43 +33,20 @@ require '../../api/panggil.php';
 							<h4 class="card-title">Data Pengguna</h4>
 						</div>
 						<div class="card-body">
-							<table class="table table-hover table-bordered" id="mytable" style="margin-top: 10px">
+							<table id="contoh" class="table table-striped table-bordered" cellspacing="0" width="100%">
 								<thead>
 									<tr>
-										<th width="50px">No</th>
-										<th>Nama Pengguna</th>
+										<th>#</th>
+										<th>Nama</th>
+										<th>Username</th>
+										<th>Level</th>
 										<th>Telepon</th>
 										<th>Email</th>
 										<th>Alamat</th>
-										<th>Username</th>
-										<th>Password</th>
-										<th style="text-align: center;">Aksi</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php
-									$no = 1;
-									$hasil = $proses->tampil_data('tbl_user', 'id_login');
-									foreach ($hasil as $isi) {
-									?>
-										<tr>
-											<td><?php echo $no; ?></td>
-											<td><?php echo $isi['nama_pengguna'] ?></td>
-											<td><?php echo $isi['telepon']; ?></td>
-											<td><?php echo $isi['email']; ?></td>
-											<td><?php echo $isi['alamat']; ?></td>
-											<td><?php echo $isi['username']; ?></td>
-											<td>****</td>
-											<td style="text-align: center;">
-												<a href="edit.php?id=<?php echo $isi['id_login']; ?>" class="btn btn-success btn-md">
-													<span class="fa fa-edit"></span></a>
-												<a onclick="return confirm('Apakah yakin data akan di hapus?')" href="crud.php?aksi=hapus&hapusid=<?php echo $isi['id_login']; ?>" class="btn btn-danger btn-md"><span class="fa fa-trash"></span></a>
-											</td>
-										</tr>
-									<?php
-										$no++;
-									}
-									?>
 								</tbody>
 							</table>
 						</div>
@@ -85,8 +62,29 @@ require '../../api/panggil.php';
 			</div>
 		</div>
 	</div>
-	<script>
-		$('#mytable').dataTable();
+	<script type="text/javascript">
+		$("#contoh").dataTable({
+			'bProcessing': true,
+			'bServerSide': true,
+			//disable order dan searching pada tombol aksi
+			"columnDefs": [{
+				"targets": [0],
+				"orderable": false,
+				"searchable": false
+			}],
+			"ajax": {
+				url: "data.php",
+				type: "post", // method  , by default get
+				//bisa kirim data ke server
+				/*data: function ( d ) {
+				  
+				          d.jurusan = "3223";
+				      },*/
+				error: function(xhr, error, thrown) {
+					console.log(xhr);
+				}
+			},
+		});
 	</script>
 </body>
 

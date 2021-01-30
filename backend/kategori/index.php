@@ -33,37 +33,16 @@ require '../../api/panggil.php';
 							<h4 class="card-title">Data Kategori</h4>
 						</div>
 						<div class="card-body">
-							<table class="table table-hover table-bordered" id="mytable" style="margin-top: 10px">
+							<table id="contoh" class="table table-striped table-bordered" cellspacing="0" width="100%">
 								<thead>
 									<tr>
-										<th width="50px">No</th>
+										<th>#</th>
 										<th>Nama</th>
-										<!-- <th>Keterangan</th> -->
 										<th>Gambar</th>
-										<th style="text-align: center;">Aksi</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php
-									$no = 1;
-									$hasil = $proses->tampil_data('kategori', 'idkat');
-									foreach ($hasil as $isi) {
-									?>
-										<tr>
-											<td><?php echo $no; ?></td>
-											<td><?php echo $isi['nama'] ?></td>
-											<!-- <td><?php echo $isi['ket']; ?></td> -->
-											<td><?php echo $isi['gambar']; ?></td>
-											<td style="text-align: center;">
-												<a href="<?=$abs;?>/backend/kategori/edit.php?idkat=<?php echo $isi['idkat']; ?>" class="btn btn-success btn-md">
-													<span class="fa fa-edit"></span></a>
-												<a onclick="return confirm('Apakah yakin data akan di hapus?')" href="crud.php?aksi=hapus&idkat=<?php echo $isi['idkat']; ?>" class="btn btn-danger btn-md"><span class="fa fa-trash"></span></a>
-											</td>
-										</tr>
-									<?php
-										$no++;
-									}
-									?>
 								</tbody>
 							</table>
 						</div>
@@ -79,8 +58,28 @@ require '../../api/panggil.php';
 			</div>
 		</div>
 	</div>
-	<script>
-		$('#mytable').dataTable();
+	<script type="text/javascript">
+		$("#contoh").dataTable({
+			'bProcessing': true,
+			'bServerSide': true,
+			//disable order dan searching pada tombol aksi
+			"columnDefs": [{
+				"targets": [0, 3],
+				"orderable": false,
+				"searchable": false
+			}],
+			"ajax": {
+				url: "data.php",
+				type: "post", // method  , by default get
+				//bisa kirim data ke server
+				/*data: function ( d ) {
+				          d.jurusan = "3223";
+				      },*/
+				error: function(xhr, error, thrown) {
+					console.log(xhr);
+				}
+			},
+		});
 	</script>
 </body>
 
