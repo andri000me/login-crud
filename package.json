@@ -1,0 +1,26 @@
+{
+  "name": "login-crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andijayawizard/login-crud.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andijayawizard/login-crud/issues"
+  },
+  "homepage": "https://github.com/andijayawizard/login-crud#readme",
+  "dependencies": {
+    "admin-lte": "^3.0.5"
+  }
+}
