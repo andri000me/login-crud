@@ -43,7 +43,15 @@ require '../../api/panggil.php';
 						<form action="<?= $abs; ?>/backend/produk/crud.php?aksi=tambah" method="POST">
 							<div class="form-group">
 								<label>Kategori</label>
-								<input type="text" value="" class="form-control" name="idkat">
+								<select name="idkat" class="form-control">
+									<option disabled>-- select --</option>
+									<?php $kategori = $proses->tampil_data('kategori', 'idkat');
+									foreach ($kategori as $kategori) { ?>
+										<option value="<?= $kategori['idkat']; ?>">
+											<?= $kategori['nama']; ?>
+										</option>
+									<?php } ?>
+								</select>
 							</div>
 							<div class="form-group">
 								<label>Nama </label>

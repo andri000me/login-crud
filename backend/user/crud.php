@@ -22,7 +22,7 @@
             'alamat'		=>$alamat
         );
         $proses->tambah_data($tabel,$data);
-        echo '<script>alert("Tambah Data Berhasil");window.location="'.$abs.'/web/user"</script>';
+        echo '<script>alert("Tambah Data Berhasil");window.location="'.$abs.'/backend/user"</script>';
     }
 
     // proses edit
@@ -60,7 +60,7 @@
         $where = 'id_login';
         $id = strip_tags($_POST['id_login']);
         $proses->edit_data($tabel,$data,$where,$id);
-        echo '<script>alert("Edit Data Berhasil");window.location="'.$abs.'/web/user"</script>';
+        echo '<script>alert("Edit Data Berhasil");window.location="'.$abs.'/backend/user"</script>';
     }
     
     // hapus data
@@ -70,7 +70,7 @@
         $where = 'id_login';
         $id = strip_tags($_GET['hapusid']);
         $proses->hapus_data($tabel,$where,$id);
-        echo '<script>alert("Hapus Data Berhasil");window.location="'.$abs.'/web/user"</script>';
+        echo '<script>alert("Hapus Data Berhasil");window.location="'.$abs.'/backend/user"</script>';
     }
 
     // login

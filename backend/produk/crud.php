@@ -3,7 +3,7 @@ require '../../api/panggil.php';
 
 // proses tambah
 if (!empty($_GET['aksi'] == 'tambah')) {
-	// $idkat = strip_tags($_POST['idkat']);
+	$idkat = strip_tags($_POST['idkat']);
 	$nama_pro = strip_tags($_POST['nama_pro']);
 	$ket = strip_tags($_POST['ket']);
 	$acak1 = strip_tags($_POST['acak1']);
@@ -11,7 +11,7 @@ if (!empty($_GET['aksi'] == 'tambah')) {
 	$tabel = 'produk';
 	# proses insert
 	$data[] = array(
-		// 'idkat'    => $idkat,
+		'idkat'    => $idkat,
 		'nama_pro'    => $nama_pro,
 		'ket'    => $ket,
 		'acak1'  => $acak1,

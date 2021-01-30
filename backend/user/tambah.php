@@ -40,7 +40,7 @@ require '../../api/panggil.php';
 						<h4 class="card-title">Tambah Pengguna</h4>
 					</div>
 					<div class="card-body">
-						<form action="crud.php?aksi=tambah" method="POST">
+						<form action="<?=$abs;?>/backend/user/crud.php?aksi=tambah" method="POST">
 							<div class="form-group">
 								<label>Nama </label>
 								<input type="text" value="" class="form-control" name="nama">

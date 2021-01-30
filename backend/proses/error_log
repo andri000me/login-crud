@@ -1,0 +1,6 @@
+[29-Jan-2021 12:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on string in /home/k1090803/public_html/api/prosescrud.php:39
+Stack trace:
+#0 /home/k1090803/public_html/api/panggil.php(15): prosesCrud->tampil_data_id('tbl_user', 'id_login', NULL)
+#1 /home/k1090803/public_html/backend/proses/crud.php(2): require('/home/k1090803/...')
+#2 {main}
+  thrown in /home/k1090803/public_html/api/prosescrud.php on line 39

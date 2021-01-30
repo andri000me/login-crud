@@ -15,6 +15,7 @@ require '../../api/panggil.php';
 // tampilkan form edit
 $idGet = strip_tags($_GET['id']);
 $hasil = $proses->tampil_data_id('produk', 'id', $idGet);
+$qkat1 = $proses->tampil_data('kategori', 'idkat');
 ?>
 
 <!DOCTYPE HTML>
@@ -49,7 +50,14 @@ $hasil = $proses->tampil_data_id('produk', 'id', $idGet);
 						<form action="<?= $abs; ?>/backend/produk/crud.php?aksi=edit" method="POST">
 							<div class="form-group">
 								<label>Kategori</label>
-								<input type="text" value="<?php echo $hasil['idkat']; ?>" class="form-control" name="idkat">
+								<select name="idkat" class="form-control">
+									<?php
+									foreach ($qkat1 as $qkat1) { ?>
+										<option <?php if ($hasil['idkat'] == $qkat1['idkat']) echo 'selected'; ?> value="<?= $qkat1['idkat']; ?>">
+											<?= $qkat1['nama']; ?>
+										</option>
+									<?php } ?>
+								</select>
 							</div>
 							<div class="form-group">
 								<label>Nama </label>

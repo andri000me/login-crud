@@ -2,7 +2,7 @@
 ini_set( "display_errors", true );
 define( "DB_DSN", "mysql:host=localhost;dbname=db_toko" );
 define( "DB_USERNAME", "root" );
-define( "DB_PASSWORD", "" );
+define( "DB_PASSWORD", "!@12QWaszx" );
 define('DB_CHARACSET', 'utf8');
 
 require_once ('Database.php');

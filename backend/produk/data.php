@@ -1,16 +1,17 @@
 <?php
 session_start();
 include "../../lib/config.php";
+include "../../api/panggil.php";
 
 //kolom apa saja yang akan ditampilkan
 $columns = array(
 	'nama_pro',
 	'nama',
-	);
+);
 
 
 //jika ingin langsung menambahkan kondisi where dengan parameter terentu query seperti ini 
-	//misal kita akan langsung menambahkan kondisi langsung hanya menampilkan provinsi jawabarat saja, 
+//misal kita akan langsung menambahkan kondisi langsung hanya menampilkan provinsi jawabarat saja, 
 //prepared statement untuk keamanan data
 /*$array_id_provinsi = array('provinsi.id_prov' => 32); //32 adalah id untuk jawabarat
 	$query = $datatable->get_custom("select provinsi.nama_prov,kabupaten.nama_kab, kecamatan.nama_kec,id_kec
@@ -28,14 +29,14 @@ inner join kecamatan on kabupaten.id_kab=kecamatan.id_kab where provinsi.id_prov
 
 $query = $datatable->get_custom("SELECT * from produk as p inner join kategori as k on p.idkat=k.idkat", $columns);
 
-	//buat inisialisasi array data
-	$data = array();
+//buat inisialisasi array data
+$data = array();
 
-	foreach ($query	as $value) {
+foreach ($query	as $value) {
 
 	//array sementara data
 	$ResultData = array();
-	
+
 	//masukan data ke array sesuai kolom table
 	$ResultData[] = $value->nama_pro;
 	$ResultData[] = $value->nama;
@@ -44,7 +45,9 @@ $query = $datatable->get_custom("SELECT * from produk as p inner join kategori a
 	//bisa juga pake logic misal jika value tertentu maka outputnya
 
 	//kita bisa buat tombol untuk keperluan edit, delete, dll, 
-	$ResultData[] = "<a href='url_edit/".$value->id."' class='btn btn-primary'>Edit</a> <a href='url_edit/".$value->id."' class='btn btn-danger'>Hapus</a> <a href='url_edit/".$value->id."' class='btn btn-primary'>tombol 3</a>";
+	$ResultData[] = "
+	<a href=\"".$abs."/backend/produk/edit.php?id=".$value->id."\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
+	<a onclick=\"return confirm('Apakah yakin data akan di hapus?')\" href=\"crud.php?aksi=hapus&id=" . $value->id . "\" class=\"btn btn-danger btn-sm\"><span class=\"fa fa-trash\"></span></a>";
 
 	//memasukan array ke variable $data
 

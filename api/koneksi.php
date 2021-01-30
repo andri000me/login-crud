@@ -6,7 +6,7 @@ class Koneksi
 		$dbhost = 'localhost'; // set the hostname
 		$dbname = 'db_toko'; // set the database name
 		$dbuser = 'root'; // set the mysql username
-		$dbpass = '';  // set the mysql password
+		$dbpass = '!@12QWaszx';  // set the mysql password
 
 		try {
 			$dbConnection = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);
