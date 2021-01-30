@@ -5,6 +5,7 @@ if (!empty($_SESSION)) {
 	session_start();
 }
 ?>
+<?php include "../api/panggil.php";?>
 <!doctype html>
 <html>
 
@@ -43,7 +44,7 @@ if (!empty($_SESSION)) {
 					<div class="card-body">
 						<!-- form berfungsi mengirimkan data input 
 						dengan method post ke proses login dengan paramater get aksi login -->
-						<form method="post" action="proses/crud.php?aksi=login" id="formlogin">
+						<form method="post" action="<?=$abs;?>/backend/proses/crud.php?aksi=login" id="formlogin">
 							<div class="form-group">
 								<label>Your username</label>
 								<input name="user" class="form-control" placeholder="user" type="text" required="required" autocomplete="off">
