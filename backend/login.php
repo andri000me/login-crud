@@ -28,7 +28,7 @@ if (!empty($_SESSION)) {
 				<div id="logout">
 					<?php if (isset($_GET['signout'])) { ?>
 						<div class="alert alert-success">
-							<small>Anda Berhasil Logout</small>
+							<small>You've been logged out!</small>
 						</div>
 					<?php } ?>
 				</div>

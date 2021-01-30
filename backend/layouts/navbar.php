@@ -11,10 +11,7 @@
         <a href="#" class="nav-link">Contact</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../logout.php" class="btn btn-danger btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="tambah.php" class="btn btn-success btn-md"><span class="fa fa-plus"></span> Tambah</a>
+        <a href="<?= $abs; ?>/backend/logout.php" class="btn btn-danger btn-sm float-right"><span class="fa fa-sign-out"></span> Logout</a>
       </li>
     </ul>
 

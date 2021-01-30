@@ -1,6 +1,6 @@
 <?php
-require '../../api/panggil.php';
-
+require '../../../api/panggil.php';
+$tabel = 'tbl_user';
 // proses tambah
 if (!empty($_GET['aksi'] == 'tambah')) {
 	$nama = strip_tags($_POST['nama']);
@@ -11,7 +11,6 @@ if (!empty($_GET['aksi'] == 'tambah')) {
 	$pass = strip_tags($_POST['pass']);
 	$id_level = strip_tags($_POST['id_level']);
 
-	$tabel = 'tbl_user';
 	# proses insert
 	$data[] = array(
 		'username'		=> $user,
@@ -57,7 +56,6 @@ if (!empty($_GET['aksi'] == 'edit')) {
 			'alamat'		=> $alamat
 		);
 	}
-	$tabel = 'tbl_user';
 	$where = 'id_login';
 	$id = strip_tags($_POST['id_login']);
 	$proses->edit_data($tabel, $data, $where, $id);
@@ -66,11 +64,10 @@ if (!empty($_GET['aksi'] == 'edit')) {
 
 // hapus data
 if (!empty($_GET['aksi'] == 'hapus')) {
-	$tabel = 'tbl_user';
 	$where = 'id_login';
 	$id = strip_tags($_GET['hapusid']);
 	$proses->hapus_data($tabel, $where, $id);
-	echo '<script>alert("Hapus Data Berhasil");window.location="' . $abs . '/backend/user"</script>';
+	echo '<script>alert("Hapus Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=user"</script>';
 }
 
 // login

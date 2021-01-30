@@ -30,6 +30,69 @@
 
   <script>
     $(function() {
+      $("#kategori").dataTable({
+        'bProcessing': true,
+        'bServerSide': true,
+        //disable order dan searching pada tombol aksi
+        "columnDefs": [{
+          "targets": [0, 3],
+          "orderable": false,
+          "searchable": false
+        }],
+        "ajax": {
+          url: "<?= $abs; ?>/backend/pages/kategori/data.php",
+          type: "post", // method  , by default get
+          //bisa kirim data ke server
+          /*data: function ( d ) {
+                    d.jurusan = "3223";
+                },*/
+          error: function(xhr, error, thrown) {
+            console.log(xhr);
+          }
+        },
+      });
+      $("#produk").dataTable({
+        'bProcessing': true,
+        'bServerSide': true,
+        //disable order dan searching pada tombol aksi
+        "columnDefs": [{
+          "targets": [3],
+          "orderable": false,
+          "searchable": false
+        }],
+        "ajax": {
+          url: "<?= $abs; ?>/backend/pages/produk/data.php",
+          type: "post", // method  , by default get
+          //bisa kirim data ke server
+          /*data: function ( d ) {
+                    d.jurusan = "3223";
+                },*/
+          error: function(xhr, error, thrown) {
+            console.log(xhr);
+          }
+        },
+      });
+      $("#user").dataTable({
+        'bProcessing': true,
+        'bServerSide': true,
+        //disable order dan searching pada tombol aksi
+        "columnDefs": [{
+          "targets": [0, 7],
+          "orderable": false,
+          "searchable": false
+        }],
+        "ajax": {
+          url: "<?= $abs; ?>/backend/pages/user/data.php",
+          type: "post", // method  , by default get
+          //bisa kirim data ke server
+          /*data: function ( d ) {
+                    d.jurusan = "3223";
+                },*/
+          error: function(xhr, error, thrown) {
+            console.log(xhr);
+          }
+        },
+      });
       $("#example1").DataTable({
         "responsive": true,
         "autoWidth": false,

@@ -1,5 +1,5 @@
 <?php
     session_start();
     session_destroy();
-    header("location:login.php?signout=sukses"); 
+    header("location: ".$abs."/login-crud/backend/index.php?signout=sukses"); 
 ?>

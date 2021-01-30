@@ -6,30 +6,30 @@ if (!empty($_SESSION)) {
 }
 // require 'proses/panggil.php';
 ?>
-<?php include "../api/panggil.php"; ?>
+<?php include "../../api/panggil.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include "layouts/head.php"; ?>
+<?php include "../layouts/head.php"; ?>
 <?php if (!empty($_SESSION['ADMIN'])) { ?>
 
   <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
       <!-- Navbar -->
-      <?php include "layouts/navbar.php"; ?>
+      <?php include "../layouts/navbar.php"; ?>
       <!-- /.navbar -->
 
       <!-- Main Sidebar Container -->
-      <?php include "layouts/aside.php"; ?>
+      <?php include "../layouts/aside.php"; ?>
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <?php include "layouts/header.php"; ?>
+        <?php include "../layouts/header.php"; ?>
         <!-- /.content-header -->
 
         <!-- Main content -->
         <section class="content">
-          <?php include "layouts/contents.php"; ?>
+          <?php include "../layouts/contents.php"; ?>
           <!--/. container-fluid -->
         </section>
         <!-- /.content -->
@@ -43,11 +43,11 @@ if (!empty($_SESSION)) {
       <!-- /.control-sidebar -->
 
       <!-- Main Footer -->
-      <?php include "layouts/footer.php"; ?>
+      <?php include "../layouts/footer.php"; ?>
     </div>
     <!-- ./wrapper -->
 
-    <?php include "layouts/scripts.php"; ?>
+    <?php include "../layouts/scripts.php"; ?>
   </body>
 <?php } else { ?>
   <br />
@@ -57,6 +57,5 @@ if (!empty($_SESSION)) {
     <p><a href="<?=$abs;?>/backend/login.php">Please login here</a></p>
   </div>
 <?php } ?>
-
 
 </html>
