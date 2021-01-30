@@ -18,6 +18,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="<?= $abs; ?>/backend/user">User</a>
+          <a class="dropdown-item" href="<?= $abs; ?>/backend/level">Level</a>
           <a class="dropdown-item" href="<?= $abs; ?>/backend/kategori">Kategori</a>
           <a class="dropdown-item" href="<?= $abs; ?>/backend/produk">Produk</a>
           <div class="dropdown-divider"></div>

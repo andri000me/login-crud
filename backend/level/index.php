@@ -30,20 +30,18 @@ require '../../api/panggil.php';
 					<br /><br />
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title">Data Produk</h4>
+							<h4 class="card-title">Data Level</h4>
 						</div>
 						<div class="card-body">
 							<table id="contoh" class="table table-striped table-bordered" cellspacing="0" width="100%">
 								<thead>
 									<tr>
+										<th>#</th>
 										<th>Nama</th>
-										<th>Kategori</th>
-										<th>Gambar</th>
-										<th></th>
+										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-
 								</tbody>
 							</table>
 						</div>
@@ -65,7 +63,7 @@ require '../../api/panggil.php';
 			'bServerSide': true,
 			//disable order dan searching pada tombol aksi
 			"columnDefs": [{
-				"targets": [3],
+				"targets": [2],
 				"orderable": false,
 				"searchable": false
 

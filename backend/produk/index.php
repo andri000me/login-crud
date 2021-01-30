@@ -5,7 +5,6 @@ if (!empty($_SESSION)) {
 	session_start();
 }
 require '../../api/panggil.php';
-include '../inc.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -17,22 +16,6 @@ include '../inc.php';
 </head>
 
 <body style="background:#586df5;">
-	<?php
-	$api_categories_list = $api_url . '/produk/list.php';
-	$json_list = @file_get_contents($api_categories_list);
-	?>
-
-
-	<?php
-	$info = isset($_GET['info']) ? $_GET['info'] : '';
-	$msg = isset($_GET['msg']) ? $_GET['msg'] : '';
-
-	if (!empty($info)) {
-		echo 'Info: ' . $info;
-		echo '<br />Msg: ' . $msg;
-		echo '<br />';
-	}
-	?>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -51,37 +34,17 @@ include '../inc.php';
 						</div>
 						<div class="card-body">
 							<table id="contoh" class="table table-striped table-bordered" cellspacing="0" width="100%">
-								<tr>
-									<th>ID</th>
-									<th>Nama</th>
-									<th>Kategori</th>
-									<!-- <th>Keterangan</th> -->
-									<!-- <th>Gambar</th> -->
-									<th>Action</th>
-								</tr>
-								<?php
-								$array = json_decode($json_list, true);
-								$result = isset($array['result']) ? $array['result'] : array();
-
-								$no = 0;
-								foreach ($result as $arr) {
-									$no++;
-
-									$link_edit = '<a href="produk-edit.php?id=' . $arr['id'] . '">[Edit]</a>';
-									$link_delete = '<a href="javascript:void:;" onclick="deleteData(\'' . $arr['id'] . '\')">[Delete]</a>';
-
-								?>
+								<thead>
 									<tr>
-										<td><?= $no; ?></td>
-										<td><?= $arr['nama_pro']; ?></td>
-										<td><?= $arr['nama']; ?></td>
-										<!-- <td><?= $arr['ket']; ?></td> -->
-										<!-- <td><?= $arr['acak1']; ?></td> -->
-										<td><?= $link_edit . ' ' . $link_delete; ?></td>
+										<th>Nama</th>
+										<th>Kategori</th>
+										<th>Gambar</th>
+										<th></th>
 									</tr>
-								<?php
-								}
-								?>
+								</thead>
+								<tbody>
+
+								</tbody>
 							</table>
 						</div>
 					</div>
@@ -98,28 +61,28 @@ include '../inc.php';
 	</div>
 	<script type="text/javascript">
 		$("#contoh").dataTable({
-			// 'bProcessing': true,
-			// 'bServerSide': true,
-			// //disable order dan searching pada tombol aksi
-			// "columnDefs": [{
-			// 	"targets": [3],
-			// 	"orderable": false,
-			// 	"searchable": false
+			'bProcessing': true,
+			'bServerSide': true,
+			//disable order dan searching pada tombol aksi
+			"columnDefs": [{
+				"targets": [3],
+				"orderable": false,
+				"searchable": false
 
-			// }],
-			// "ajax": {
-			// 	url: "data.php",
-			// 	type: "post", // method  , by default get
-			// 	//bisa kirim data ke server
-			// 	/*data: function ( d ) {
+			}],
+			"ajax": {
+				url: "data.php",
+				type: "post", // method  , by default get
+				//bisa kirim data ke server
+				/*data: function ( d ) {
+				  
+				          d.jurusan = "3223";
+				      },*/
+				error: function(xhr, error, thrown) {
+					console.log(xhr);
 
-			// 	          d.jurusan = "3223";
-			// 	      },*/
-			// 	error: function(xhr, error, thrown) {
-			// 		console.log(xhr);
-
-			// 	}
-			// },
+				}
+			},
 
 		});
 	</script>

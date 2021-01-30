@@ -5,9 +5,8 @@ include "../../api/panggil.php";
 
 //kolom apa saja yang akan ditampilkan
 $columns = array(
-	'nama_pro',
+	'id',
 	'nama',
-	'acak1',
 );
 
 
@@ -28,7 +27,7 @@ inner join kecamatan on kabupaten.id_kab=kecamatan.id_kab where provinsi.id_prov
 // on provinsi.id_prov=kabupaten.id_prov
 // inner join kecamatan on kabupaten.id_kab=kecamatan.id_kab ",$columns);
 
-$query = $datatable->get_custom("SELECT * from produk as p inner join kategori as k on p.idkat=k.idkat", $columns);
+$query = $datatable->get_custom("SELECT * from tbl_user_level as l ", $columns);
 
 //buat inisialisasi array data
 $data = array();
@@ -39,15 +38,14 @@ foreach ($query	as $value) {
 	$ResultData = array();
 
 	//masukan data ke array sesuai kolom table
-	$ResultData[] = $value->nama_pro;
+	$ResultData[] = $value->id;
 	$ResultData[] = $value->nama;
-	$ResultData[] = $value->acak1;
 
 	//bisa juga pake logic misal jika value tertentu maka outputnya
 
 	//kita bisa buat tombol untuk keperluan edit, delete, dll, 
 	$ResultData[] = "
-	<a href=\"".$abs."/backend/produk/edit.php?id=".$value->id."\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
+	<a href=\"".$abs."/backend/level/edit.php?id=".$value->id."\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
 	<a onclick=\"return confirm('Apakah yakin data akan di hapus?')\" href=\"crud.php?aksi=hapus&id=" . $value->id . "\" class=\"btn btn-danger btn-sm\"><span class=\"fa fa-trash\"></span></a>";
 
 	//memasukan array ke variable $data

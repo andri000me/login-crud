@@ -18,7 +18,7 @@ if (!empty($nama_pro)) {
 }
 
 // $cat_list = $db->query('select * from produk ' . $sql_name . ' ' . $sql_limit);
-$cat_list = $db->query('SELECT * from produk inner join kategori where produk.idkat=kategori.idkat ' . $sql_limit) or die(mysqli_error($db));
+$cat_list = $db->query('SELECT * from produk as p inner join kategori as k where p.idkat=k.idkat ' . $sql_limit) or die(mysqli_error($db));
 
 $arr = array();
 $arr['info'] = 'success';

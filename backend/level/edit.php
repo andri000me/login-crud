@@ -14,8 +14,7 @@ require '../../api/panggil.php';
 
 // tampilkan form edit
 $idGet = strip_tags($_GET['id']);
-$hasil = $proses->tampil_data_id('produk', 'id', $idGet);
-$qkat1 = $proses->tampil_data('kategori', 'idkat');
+$hasil = $proses->tampil_data_id('tbl_user_level', 'id', $idGet);
 ?>
 
 <!DOCTYPE HTML>
@@ -42,35 +41,17 @@ $qkat1 = $proses->tampil_data('kategori', 'idkat');
 				<br />
 				<div class="card">
 					<div class="card-header">
-						<h4 class="card-title">Edit Kategori - <?php echo $hasil['nama_pro']; ?></h4>
+						<h4 class="card-title">Edit Level - <?php echo $hasil['nama']; ?></h4>
 					</div>
 					<div class="card-body">
 						<!-- form berfungsi mengirimkan data input 
 						dengan method post ke proses crud dengan paramater get aksi edit -->
-						<form action="<?= $abs; ?>/backend/produk/crud.php?aksi=edit" method="POST">
-							<div class="form-group">
-								<label>Kategori</label>
-								<select name="idkat" class="form-control">
-									<?php
-									foreach ($qkat1 as $qkat1) { ?>
-										<option <?php if ($hasil['idkat'] == $qkat1['idkat']) echo 'selected'; ?> value="<?= $qkat1['idkat']; ?>">
-											<?= $qkat1['nama']; ?>
-										</option>
-									<?php } ?>
-								</select>
-							</div>
+						<form action="<?= $abs; ?>/backend/level/crud.php?aksi=edit" method="POST">
+
 							<div class="form-group">
 								<label>Nama </label>
-								<input type="text" value="<?php echo $hasil['nama_pro']; ?>" class="form-control" name="nama_pro">
+								<input type="text" value="<?php echo $hasil['nama']; ?>" class="form-control" name="nama">
 								<input type="hidden" value="<?php echo $hasil['id']; ?>" class="form-control" name="id">
-							</div>
-							<div class="form-group">
-								<label>Keterangan</label>
-								<textarea name="ket" class="form-control"><?php echo $hasil['ket']; ?></textarea>
-							</div>
-							<div class="form-group">
-								<label>Gambar</label>
-								<input type="harga" value="<?php echo $hasil['acak1']; ?>" class="form-control" name="acak1">
 							</div>
 							<button class="btn btn-primary btn-md" name="create"><i class="fa fa-edit"> </i> Edit Data</button>
 						</form>
