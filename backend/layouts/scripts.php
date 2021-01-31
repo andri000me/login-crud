@@ -30,6 +30,27 @@
 
   <script>
     $(function() {
+      $("#level").dataTable({
+        'bProcessing': true,
+        'bServerSide': true,
+        //disable order dan searching pada tombol aksi
+        "columnDefs": [{
+          "targets": [2],
+          "orderable": false,
+          "searchable": false
+        }],
+        "ajax": {
+          url: "<?= $abs; ?>/backend/pages/level/data.php",
+          type: "post", // method  , by default get
+          //bisa kirim data ke server
+          /*data: function ( d ) {
+                    d.jurusan = "3223";
+                },*/
+          error: function(xhr, error, thrown) {
+            console.log(xhr);
+          }
+        },
+      });
       $("#kategori").dataTable({
         'bProcessing': true,
         'bServerSide': true,
@@ -77,7 +98,7 @@
         'bServerSide': true,
         //disable order dan searching pada tombol aksi
         "columnDefs": [{
-          "targets": [0, 7],
+          "targets": [0, 6],
           "orderable": false,
           "searchable": false
         }],

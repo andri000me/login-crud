@@ -1,9 +1,9 @@
 <?php
-require '../../api/panggil.php';
+require '../../../api/panggil.php';
 $tabel = 'tbl_user_level';
 
 // proses tambah
-if (!empty($_GET['aksi'] == 'tambah')) {
+if (!empty($_GET['act'] == 'tambah')) {
 	$nama = strip_tags($_POST['nama']);
 
 	# proses insert
@@ -11,11 +11,11 @@ if (!empty($_GET['aksi'] == 'tambah')) {
 		'nama'    => $nama,
 	);
 	$proses->tambah_data($tabel, $data);
-	echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/backend/level"</script>';
+	echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=level"</script>';
 }
 
 // proses edit
-if (!empty($_GET['aksi'] == 'edit')) {
+if (!empty($_GET['act'] == 'edit')) {
 	$nama = strip_tags($_POST['nama']);
 
 	// jika password tidak diisi
@@ -30,7 +30,7 @@ if (!empty($_GET['aksi'] == 'edit')) {
 	$where = 'id';
 	$id = strip_tags($_POST['id']);
 	$proses->edit_data($tabel, $data, $where, $id);
-	echo '<script>alert("Edit Data Berhasil");window.location="' . $abs . '/backend/level"</script>';
+	echo '<script>alert("Edit Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=level"</script>';
 }
 
 // hapus data

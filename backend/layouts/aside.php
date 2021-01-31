@@ -31,11 +31,28 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="<?= $abs; ?>/backend/pages/index.php?page=user" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Users</p>
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-circle"></i>
+                    <p>
+                      Users
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
                   </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="<?= $abs; ?>/backend/pages/index.php?page=user" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Users</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?= $abs; ?>/backend/pages/index.php?page=level" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Level</p>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nav-item">
                   <a href="<?= $abs; ?>/backend/pages/index.php?page=kategori" class="nav-link active">

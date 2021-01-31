@@ -1,7 +1,7 @@
 <?php
 session_start();
-include "../../lib/config.php";
-include "../../api/panggil.php";
+include "../../../lib/config.php";
+include "../../../api/panggil.php";
 
 //kolom apa saja yang akan ditampilkan
 $columns = array(
@@ -45,7 +45,7 @@ foreach ($query	as $value) {
 
 	//kita bisa buat tombol untuk keperluan edit, delete, dll, 
 	$ResultData[] = "
-	<a href=\"".$abs."/backend/level/edit.php?id=".$value->id."\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
+	<a href=\"" . $abs . "/backend/pages/index.php?page=level-form&act=edit&id=" . $value->id . "\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
 	<a onclick=\"return confirm('Apakah yakin data akan di hapus?')\" href=\"crud.php?aksi=hapus&id=" . $value->id . "\" class=\"btn btn-danger btn-sm\"><span class=\"fa fa-trash\"></span></a>";
 
 	//memasukan array ke variable $data

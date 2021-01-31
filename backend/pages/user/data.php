@@ -49,13 +49,14 @@ foreach ($query	as $value) {
 	$ResultData[] = $value->nama;
 	$ResultData[] = $value->telepon;
 	$ResultData[] = $value->email;
-	$ResultData[] = $value->alamat;
+	// $ResultData[] = $value->alamat;
 
 	//bisa juga pake logic misal jika value tertentu maka outputnya
 
 	//kita bisa buat tombol untuk keperluan edit, delete, dll, 
 	$ResultData[] = "
-	<a href=\"" . $abs . "/backend/pages/index.php?page=edit&id=" . $value->id_login . "\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
+	<button type=\"button\" class=\"btn btn-default\" data-toggle=\"modal\" data-target=\"#modal-user-" . $value->id_login . "\">quick info</button>
+	<a href=\"" . $abs . "/backend/pages/index.php?page=user-form&act=edit&id=" . $value->id_login . "\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
 	<a onclick=\"return confirm('Apakah yakin data akan di hapus?')\" href=\"" . $abs . "/backend/pages/user/crud.php?aksi=hapus&id=" . $value->id_login . "\" class=\"btn btn-danger btn-sm\"><span class=\"fa fa-trash\"></span></a>";
 
 	//memasukan array ke variable $data

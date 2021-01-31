@@ -15,7 +15,9 @@ if (!empty($_SESSION)) {
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">DataTable with default features</h3>
+            <h3 class="card-title">
+              <a href="<?= $abs; ?>/backend/pages/index.php?page=<?= $page; ?>-form&act=tambah" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a>
+            </h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -28,7 +30,7 @@ if (!empty($_SESSION)) {
                   <th>Level</th>
                   <th>Telepon</th>
                   <th>Email</th>
-                  <th>Alamat</th>
+                  <!-- <th>Alamat</th> -->
                   <th>Action</th>
                 </tr>
               </thead>
