@@ -55,6 +55,12 @@
                   </ul>
                 </li>
                 <li class="nav-item">
+                  <a href="<?= $abs; ?>/backend/pages/index.php?page=customers" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Customers</p>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a href="<?= $abs; ?>/backend/pages/index.php?page=kategori" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Kategori</p>

@@ -13,6 +13,12 @@ switch ($page) {
   case 'level-form':
     include "level/form.php";
     break;
+  case 'customers':
+    include "customers/index.php";
+    break;
+  case 'customers-form':
+    include "customers/form.php";
+    break;
   case 'kategori':
     include "kategori/index.php";
     break;
