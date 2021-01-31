@@ -596,7 +596,7 @@ CREATE TABLE IF NOT EXISTS `kecamatan` (
   PRIMARY KEY (`id_kec`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_toko.kecamatan: ~7.074 rows (approximately)
+-- Dumping data for table db_toko.kecamatan: ~7.094 rows (approximately)
 /*!40000 ALTER TABLE `kecamatan` DISABLE KEYS */;
 REPLACE INTO `kecamatan` (`id_kec`, `id_kab`, `nama_kec`) VALUES
 	('110101', '1101', 'Bakongan'),
@@ -7830,13 +7830,15 @@ CREATE TABLE IF NOT EXISTS `tbl_customers` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_toko.tbl_customers: ~3 rows (approximately)
+-- Dumping data for table db_toko.tbl_customers: ~6 rows (approximately)
 /*!40000 ALTER TABLE `tbl_customers` DISABLE KEYS */;
 REPLACE INTO `tbl_customers` (`id`, `nama`, `pic`, `telepon`, `email`, `alamat`) VALUES
 	(1, 'pt sentosa bahari', 'mr sentosa', '021/sekian/0877', 'sentosa.bahari@gmail.com', 'jl raya bogor'),
 	(2, 'pt pondok sejahtera', 'bapak mulyadi', '0899/0812', 'pondok.sejahtera@gmail.com', 'jl jalan ke tanah abang'),
 	(3, 'pt alam semesta', 'bapak alamsyah', '0899/0813', 'alam.sejahtera@gmail.com', 'jl ahmad yani'),
-	(4, 'kementerian BUMN', 'bapak deni', '0899/0822/0856-9900', 'bumn@bumn.gov', 'jakarta, indonesia');
+	(4, 'kementerian BUMN', 'bapak deni', '0899/0822/0856-9900', 'bumn@bumn.gov', 'jakarta, indonesia'),
+	(5, ' alert(\'halo\'); ', ' alert(\'halo\'); ', ' alert(\'halo\'); ', 'andijayawizard@gmail.com', '\r\nalert(\'halo\');\r\n'),
+	(6, ' alert("hacked by scriptwizard"); ', ' alert("hacked by scriptwizard"); ', ' alert("hacked by scriptwizard"); ', 'andijayawizard@gmail.com', '\r\nalert("hacked by scriptwizard");\r\n');
 /*!40000 ALTER TABLE `tbl_customers` ENABLE KEYS */;
 
 -- Dumping structure for table db_toko.tbl_projects
@@ -7847,7 +7849,7 @@ CREATE TABLE IF NOT EXISTS `tbl_projects` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_toko.tbl_projects: ~3 rows (approximately)
+-- Dumping data for table db_toko.tbl_projects: ~4 rows (approximately)
 /*!40000 ALTER TABLE `tbl_projects` DISABLE KEYS */;
 REPLACE INTO `tbl_projects` (`id`, `id_customers`, `nama`) VALUES
 	(1, 4, 'proyek di kementerian BUMN'),
@@ -7869,15 +7871,15 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   PRIMARY KEY (`id_login`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_toko.tbl_user: ~7 rows (approximately)
+-- Dumping data for table db_toko.tbl_user: ~8 rows (approximately)
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
 REPLACE INTO `tbl_user` (`id_login`, `id_level`, `username`, `password`, `nama_pengguna`, `telepon`, `email`, `alamat`) VALUES
-	(8, 1, 'adminlwd', '9e422c145e884a5383f8f16d9d3bee79', 'admin lwd', '1212', 'andijayawizard@gmail.com', 'depok'),
+	(8, 1, 'adminlwd', 'd311e5c9b81927e2e30645eb1577b4d44631844e', 'admin lwd', '1212', 'andijayawizard@gmail.com', 'depok'),
 	(9, 2, 'manager1', 'c240642ddef994358c96da82c0361a58', 'manager1', '1234', 'manager@gmail.com', 'jakarta'),
 	(14, 4, 'eeng', 'c58ee092d8b7aa80048ce3e7a721e08a', 'eeng', '9090', 'eeng@gmail.com', 'bogor'),
 	(15, 3, 'fahmi', 'f11d50d63d3891a44c332e46d6d7d561', 'fahmi', '1212', 'fahmi@gmail.com', 'bekasi timur'),
 	(16, 2, 'deni', '43f41d127a81c54d4c8f5f93daeb7118', 'deni', '8989', 'deni@gmail.com', 'depok'),
-	(17, 1, 'andijaya', 'a107282e94bbe2afab662cf9cd2d03ba', 'andijaya', '1234', 'andijayawizard@gmail.com', 'depok'),
+	(17, 1, 'andijaya', 'b243b09f69da6887b8260c35caffb22c6ef36746', 'andijaya', '1234', 'andijayawizard@gmail.com', 'depok'),
 	(18, 4, 'ginanjar', '6227d72a068a272ff98d126357b0c573', 'ginanjar', '4321', 'ginanjar@gmail.com', 'bekasi barat'),
 	(19, 4, 'heri', '6812af90c6a1bbec134e323d7e70587b', 'heri (heboh sendiri)', '7878', 'heri@gmail.com', 'tangerang');
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
