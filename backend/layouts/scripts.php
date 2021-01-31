@@ -30,6 +30,27 @@
 
   <script>
     $(function() {
+      $("#projects").dataTable({
+        'bProcessing': true,
+        'bServerSide': true,
+        //disable order dan searching pada tombol aksi
+        "columnDefs": [{
+          "targets": [0, 3],
+          "orderable": false,
+          "searchable": false
+        }],
+        "ajax": {
+          url: "<?= $abs; ?>/backend/pages/projects/data.php",
+          type: "post", // method  , by default get
+          //bisa kirim data ke server
+          /*data: function ( d ) {
+                    d.jurusan = "3223";
+                },*/
+          error: function(xhr, error, thrown) {
+            console.log(xhr);
+          }
+        },
+      });
       $("#customers").dataTable({
         'bProcessing': true,
         'bServerSide': true,

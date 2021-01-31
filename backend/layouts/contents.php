@@ -19,6 +19,12 @@ switch ($page) {
   case 'customers-form':
     include "customers/form.php";
     break;
+  case 'projects':
+    include "projects/index.php";
+    break;
+  case 'projects-form':
+    include "projects/form.php";
+    break;
   case 'kategori':
     include "kategori/index.php";
     break;

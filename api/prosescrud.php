@@ -11,7 +11,8 @@ class prosesCrud
 	function proses_login($user, $pass)
 	{
 		// untuk password kita enkrip dengan md5
-		$row = $this->db->prepare('SELECT * FROM tbl_user WHERE username=? AND password=md5(?)');
+		// $row = $this->db->prepare('SELECT * FROM tbl_user WHERE username=? AND password=md5(?)');
+		$row = $this->db->prepare('SELECT * FROM tbl_user WHERE username=? AND password=sha1(?)');
 		$row->execute(array($user, $pass));
 		$count = $row->rowCount();
 		if ($count > 0) {

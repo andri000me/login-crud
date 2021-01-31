@@ -14,7 +14,7 @@ if (!empty($_GET['act'] == 'tambah')) {
 	# proses insert
 	$data[] = array(
 		'username'		=> $user,
-		'password'		=> md5($pass),
+		'password'		=> password_hash($pass, PASSWORD_DEFAULT),
 		'id_level'		=> $id_level,
 		'nama_pengguna'	=> $nama,
 		'telepon'		=> $telepon,
@@ -22,7 +22,8 @@ if (!empty($_GET['act'] == 'tambah')) {
 		'alamat'		=> $alamat
 	);
 	$proses->tambah_data($tabel, $data);
-	echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=user"</script>';
+	// echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=user"</script>';
+	header('location: ' . $abs . '/backend/pages/index.php?page=user');
 }
 
 // proses edit
@@ -50,7 +51,8 @@ if (!empty($_GET['act'] == 'edit')) {
 		$data = array(
 			'username'		=> $user,
 			'id_level'		=> $id_level,
-			'password'		=> md5($pass),
+			'password'		=> sha1($pass),
+			// 'password'		=> hash('md5', $pass),
 			'nama_pengguna'	=> $nama,
 			'telepon'		=> $telepon,
 			'email'			=> $email,
@@ -60,7 +62,8 @@ if (!empty($_GET['act'] == 'edit')) {
 	$where = 'id_login';
 	$id = strip_tags($_POST['id_login']);
 	$proses->edit_data($tabel, $data, $where, $id);
-	echo '<script>alert("Edit Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=user"</script>';
+	// echo '<script>alert("Edit Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=user"</script>';
+	header('location: ' . $abs . '/backend/pages/index.php?page=user');
 }
 
 // hapus data

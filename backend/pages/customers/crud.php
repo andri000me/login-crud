@@ -43,7 +43,7 @@ if (!empty($_GET['act'] == 'edit')) {
 	$where = 'id';
 	$id = strip_tags($_POST['id']);
 	$proses->edit_data($tabel, $data, $where, $id);
-	echo '<script>alert("Edit Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=customers"</script>';
+	header('location: ' . $abs . '/backend/pages/index.php?page=customers');
 }
 
 // hapus data
