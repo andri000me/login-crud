@@ -1,7 +1,7 @@
 <?php include "../../api/panggil.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include "head-moroom.php"; ?>
+<?php include "head.php"; ?>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div class="wrapper">
