@@ -1,0 +1,186 @@
+Time : 18:12:39
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * from tbl_projects_progress where id_projects=
+
+Time : 18:12:36
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * from tbl_projects_progress where id_projects=
+
+Time : 18:12:33
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * from tbl_projects_progress where id_projects=
+
+Time : 18:12:31
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * from tbl_projects_progress where id_projects=
+
+Time : 16:14:34
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ss.id_site_survey' in 'on clause'
+Raw SQL : SELECT * from tbl_site_survey_methods ssm 
+inner join tbl_site_survey ss on ssm.id=ss.id_site_survey 
+order by ssm.id desc
+
+Time : 16:14:23
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ss.id_site_survey' in 'on clause'
+Raw SQL : SELECT * from tbl_site_survey_methods ssm 
+inner join tbl_site_survey ss on ssm.id=ss.id_site_survey 
+order by id desc
+
+Time : 16:13:41
+SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in order clause is ambiguous
+Raw SQL : SELECT * from tbl_site_survey_methods ssm 
+inner join tbl_site_survey ss on ssm.id_site_survey=ss.id 
+order by id desc
+
+Time : 15:41:21
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.pic' in 'field list'
+Raw SQL : SELECT s.id, s.nama, s.pic, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+m.nama as nama_methods  
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id 
+inner join tbl_job_methods m on s.id_methods=m.id 
+order by id desc
+
+Time : 12:48:36
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '\%rabu\%' at line 1
+Raw SQL : SELECT * from tbl_projects_progress where nama like \%rabu\%
+
+Time : 12:32:35
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * from tbl_projects_progress where id_projects=
+
+Time : 12:32:33
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * from tbl_projects_progress where id_projects=
+
+Time : 12:32:30
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * from tbl_projects_progress where id_projects=
+
+Time : 12:32:28
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+Raw SQL : SELECT * from tbl_projects_progress where id_projects=
+
+Time : 12:30:14
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'k1090803_morilloroom.tbl_projects_proasdfasdfgress' doesn't exist
+Raw SQL : SELECT * from tbl_projects_proasdfasdfgress where id_projects='15'
+
+Time : 12:16:40
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+-- inner join tbl_projects proj on prog.id_pro' at line 3
+Raw SQL : SELECT prog.id, prog.nama, prog.job_plan, prog.job_repair, prog.note, 
+-- proj.nama as nama_projects 
+from tbl_projects_progress prog  
+-- inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 12:16:28
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'proj.nama' in 'field list'
+Raw SQL : SELECT prog.id, prog.nama, prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects 
+from tbl_projects_progress prog  
+-- inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:53:40
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:52:26
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:44:23
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:43:45
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:43:35
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:41:10
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:41:07
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:40:57
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:39:53
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:35:08
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:34:54
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:33:28
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id
+
+Time : 11:24:00
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projec' at line 3
+Raw SQL : SELECT prog.job_plan, prog.job_repair, prog.note, 
+proj.nama as nama_projects,  
+from tbl_projects_progress prog  
+inner join tbl_projects proj on prog.id_projects=proj.id

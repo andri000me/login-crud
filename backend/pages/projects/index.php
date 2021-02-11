@@ -15,7 +15,8 @@ if (!empty($_SESSION)) {
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">
-              <a href="<?= $abs; ?>/backend/pages/index.php?page=<?= $page; ?>-form&act=tambah" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a>
+              <a href="<?= $abs; ?>/backend/pages/index.php?page=<?= $page; ?>&act=tambah" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a>
+              <?= $data['title']; ?>
             </h3>
           </div>
           <!-- /.card-header -->
@@ -25,7 +26,8 @@ if (!empty($_SESSION)) {
                 <tr>
                   <th>#</th>
                   <th>Nama</th>
-                  <th>Customers</th>
+                  <th>Progress</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>

@@ -6,17 +6,16 @@ if (!empty($_SESSION)) {
 }
 // require 'proses/panggil.php';
 ?>
-<?php if (!empty($_SESSION['ADMIN'])) { ?>
-
+<?php if (!empty($_SESSION['ADMIN']) && $level['id']==1) { ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
         <!-- /.card -->
-
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">
-              <a href="<?= $abs; ?>/backend/pages/index.php?page=<?= $page; ?>-form&act=tambah" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a>
+              <a href="<?= $abs; ?>/backend/pages/index.php?page=<?= $page; ?>&act=tambah" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a>
+              <?= $data['title']; ?>
             </h3>
           </div>
           <!-- /.card-header -->
@@ -27,10 +26,10 @@ if (!empty($_SESSION)) {
                   <th>#</th>
                   <th>Nama</th>
                   <th>Username</th>
-                  <th>Level</th>
                   <th>Telepon</th>
                   <th>Email</th>
-                  <!-- <th>Alamat</th> -->
+                  <th>Level</th>
+                  <th>Gambar</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -53,3 +52,17 @@ if (!empty($_SESSION)) {
     <p><a href="<?= $abs; ?>/backend/login.php">Please login here</a></p>
   </div>
 <?php } ?>
+
+<?php
+$msg=$_GET['msg'];
+if ($msg) {?>
+  <script type="text/javascript">
+    toastr.success('<?=$msg;?>')
+    // Swal.fire({
+    //   title: 'Error!',
+    //   text: 'Do you want to continue',
+    //   icon: 'error',
+    //   confirmButtonText: 'Cool'
+    // })
+  </script>
+<?php }?>

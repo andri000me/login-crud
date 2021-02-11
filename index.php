@@ -23,7 +23,7 @@
 
 <body class="bg">
   <div class="frame">
-    <img src="images/uc.jpg">
+    <img src="assets/uc.jpg">
   </div>
 </body>
 

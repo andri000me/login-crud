@@ -1,40 +1,68 @@
 <?php
 require '../../../api/panggil.php';
 $tabel = 'tbl_user';
+
+$nama = trim(htmlspecialchars(strip_tags($_POST['nama'])));
+$telepon = trim(htmlspecialchars(strip_tags($_POST['telepon'])));
+$email = trim(htmlspecialchars(strip_tags($_POST['email'])));
+$alamat = trim(htmlspecialchars(strip_tags($_POST['alamat'])));
+$user = trim(htmlspecialchars(strip_tags($_POST['user'])));
+$pass = trim(htmlspecialchars(strip_tags($_POST['pass'])));
+$id_level = trim(htmlspecialchars(strip_tags($_POST['id_level'])));
+$file1 = trim(htmlspecialchars(strip_tags($_POST['file1'])));
+$created_at = date('Y-m-d H:i:s');
+$updated_at = date('Y-m-d H:i:s');
+
+$acak=rand(0000, 9999).'-'.rand(0000, 9999).'-'.rand(0000, 9999);
+$fileacak = $acak . "-" . $filename1;
+
 // proses tambah
 if (!empty($_GET['act'] == 'tambah')) {
-	$nama = strip_tags($_POST['nama']);
-	$telepon = strip_tags($_POST['telepon']);
-	$email = strip_tags($_POST['email']);
-	$alamat = strip_tags($_POST['alamat']);
-	$user = strip_tags($_POST['user']);
-	$pass = strip_tags($_POST['pass']);
-	$id_level = strip_tags($_POST['id_level']);
+	for ($x = 1; $x <= 6; $x++) {
+		$pathTmp = $_FILES['file' . $x]['tmp_name'];
+		$pathDest = "../../../assets/uploads/images/user/" . $acak . "-" . $x . ".jpg";
+		if ($_FILES['file' . $x]['tmp_name'] != "") {
+			chmod($file . $x, 775);
+			move_uploaded_file($pathTmp, $pathDest);
+		}
+	}
 
 	# proses insert
+	$detail = $proses->tampil_data_id('tbl_user', 'username', $_POST['user']);
+	if ($user== $detail['username']) {
+		echo $user." duplicate";
+		exit;
+	}
+
 	$data[] = array(
 		'username'		=> $user,
-		'password'		=> password_hash($pass, PASSWORD_DEFAULT),
+		// 'password'		=> password_hash($pass, PASSWORD_DEFAULT),
+		'password'		=> sha1($pass),
 		'id_level'		=> $id_level,
 		'nama_pengguna'	=> $nama,
 		'telepon'		=> $telepon,
 		'email'			=> $email,
-		'alamat'		=> $alamat
+		'alamat'		=> $alamat,
+		'acak'		=> $acak,
+		'created_at'		=> $created_at
 	);
 	$proses->tambah_data($tabel, $data);
-	// echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=user"</script>';
-	header('location: ' . $abs . '/backend/pages/index.php?page=user');
+	header('location: ' . $abs . '/backend/pages/index.php?page=user&msg='.urlencode('insert data success'));
 }
 
 // proses edit
 if (!empty($_GET['act'] == 'edit')) {
-	$nama = strip_tags($_POST['nama']);
-	$telepon = strip_tags($_POST['telepon']);
-	$email = strip_tags($_POST['email']);
-	$alamat = strip_tags($_POST['alamat']);
-	$user = strip_tags($_POST['user']);
-	$pass = strip_tags($_POST['pass']);
-	$id_level = strip_tags($_POST['id_level']);
+	$detail = $proses->tampil_data_id('tbl_user', 'id_login', $_POST['id_login']);
+
+	for ($x = 1; $x <= 6; $x++) {
+		$flama = $abs . "/assets/uploads/images/user/".$detail['acak'] . "-$x";
+		$pathTmp = $_FILES['file' . $x]['tmp_name'];
+		$pathDest = "../../../assets/uploads/images/user/" . $detail['acak'] . "-" . $x . ".jpg";
+		if ($_FILES['file' . $x]['tmp_name'] <> "") {
+			chmod($file . $x, 775);
+			move_uploaded_file($pathTmp, $pathDest);
+		}
+	}
 
 	// jika password tidak diisi
 	if ($pass == '') {
@@ -44,10 +72,10 @@ if (!empty($_GET['act'] == 'edit')) {
 			'nama_pengguna'	=> $nama,
 			'telepon'		=> $telepon,
 			'email'			=> $email,
-			'alamat'		=> $alamat
+			'alamat'		=> $alamat,
+			'updated_at'		=> $updated_at
 		);
 	} else {
-
 		$data = array(
 			'username'		=> $user,
 			'id_level'		=> $id_level,
@@ -56,22 +84,22 @@ if (!empty($_GET['act'] == 'edit')) {
 			'nama_pengguna'	=> $nama,
 			'telepon'		=> $telepon,
 			'email'			=> $email,
-			'alamat'		=> $alamat
+			'alamat'		=> $alamat,
+			'updated_at'		=> $updated_at
 		);
 	}
 	$where = 'id_login';
 	$id = strip_tags($_POST['id_login']);
 	$proses->edit_data($tabel, $data, $where, $id);
-	// echo '<script>alert("Edit Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=user"</script>';
-	header('location: ' . $abs . '/backend/pages/index.php?page=user');
+	header('location: ' . $abs . '/backend/pages/index.php?page=user&msg='.urlencode('update data success'));
 }
 
 // hapus data
-if (!empty($_GET['aksi'] == 'hapus')) {
+if (!empty($_GET['act'] == 'hapus')) {
 	$where = 'id_login';
-	$id = strip_tags($_GET['id']);
+	$id = strip_tags($_GET['id_login']);
 	$proses->hapus_data($tabel, $where, $id);
-	echo '<script>alert("Hapus Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=user"</script>';
+	header('location: ' . $abs . '/backend/pages/index.php?page=user&msg='.urlencode('delete data success'));
 }
 
 // login

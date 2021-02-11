@@ -1,32 +1,28 @@
 <?php
-require '../../api/panggil.php';
+require '../../../api/panggil.php';
 
 // proses tambah
-if (!empty($_GET['aksi'] == 'tambah')) {
-	// $idkat = strip_tags($_POST['idkat']);
-	$nama_pro = strip_tags($_POST['nama_pro']);
+if (!empty($_GET['act'] == 'tambah')) {
+	$nama = strip_tags($_POST['nama']);
 	$ket = strip_tags($_POST['ket']);
-	$acak1 = strip_tags($_POST['acak1']);
+	$gambar = strip_tags($_POST['gambar']);
 
-	$tabel = 'produk';
+	$tabel = 'kategori';
 	# proses insert
 	$data[] = array(
-		// 'idkat'    => $idkat,
-		'nama_pro'    => $nama_pro,
+		'nama'    => $nama,
 		'ket'    => $ket,
-		'acak1'  => $acak1,
+		'gambar'  => $gambar,
 	);
 	$proses->tambah_data($tabel, $data);
-	echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/backend/produk"</script>';
+	header('location: ' . $abs . '/backend/pages/index.php?page=kategori');
 }
 
 // proses edit
-if (!empty($_GET['aksi'] == 'edit')) {
-	// $id = strip_tags($_POST['id']);
-	$idkat = strip_tags($_POST['idkat']);
-	$nama_pro = strip_tags($_POST['nama_pro']);
+if (!empty($_GET['act'] == 'edit')) {
+	$nama = strip_tags($_POST['nama']);
 	$ket = strip_tags($_POST['ket']);
-	$acak1 = strip_tags($_POST['acak1']);
+	$gambar = strip_tags($_POST['gambar']);
 
 	// jika password tidak diisi
 	if (!$pass == '') {
@@ -34,25 +30,23 @@ if (!empty($_GET['aksi'] == 'edit')) {
 	} else {
 
 		$data = array(
-			// 'id' => $id,
-			'idkat' => $idkat,
-			'nama_pro'    => $nama_pro,
+			'nama'    => $nama,
 			'ket'  => $ket,
-			'acak1'    => $acak1,
+			'gambar'    => $gambar,
 		);
 	}
-	$tabel = 'produk';
-	$where = 'id';
-	$id = strip_tags($_POST['id']);
+	$tabel = 'kategori';
+	$where = 'idkat';
+	$id = strip_tags($_POST['idkat']);
 	$proses->edit_data($tabel, $data, $where, $id);
-	echo '<script>alert("Edit Data Berhasil");window.location="' . $abs . '/backend/produk"</script>';
+	header('location: ' . $abs . '/backend/pages/index.php?page=kategori');
 }
 
 // hapus data
-if (!empty($_GET['aksi'] == 'hapus')) {
-	$tabel = 'produk';
-	$where = 'id';
-	$id = strip_tags($_GET['id']);
+if (!empty($_GET['act'] == 'hapus')) {
+	$tabel = 'kategori';
+	$where = 'idkat';
+	$id = strip_tags($_GET['idkat']);
 	$proses->hapus_data($tabel, $where, $id);
-	echo '<script>alert("Hapus Data Berhasil");window.location="' . $abs . '/backend/produk"</script>';
+	header('location: ' . $abs . '/backend/pages/index.php?page=kategori');
 }

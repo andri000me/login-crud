@@ -5,9 +5,10 @@ include "../../../api/panggil.php";
 
 //kolom apa saja yang akan ditampilkan
 $columns = array(
-	'id',
-	'id_customers',
-	'nama',
+	'p.id',
+	'p.nama',
+	'p.progress',
+	's.nama',
 );
 
 
@@ -25,7 +26,24 @@ $columns = array(
 // on provinsi.id_prov=kabupaten.id_prov
 // inner join kecamatan on kabupaten.id_kab=kecamatan.id_kab ",$columns);
 
-$query = $datatable->get_custom("SELECT p.id, p.nama, c.nama as nama_customers FROM tbl_projects p INNER JOIN tbl_customers c ON p.id_customers=c.id", $columns);
+$query = $datatable->get_custom("SELECT p.id, p.nama, p.progress, s.nama as nama_status 
+FROM tbl_projects p
+inner join tbl_job_status s
+on p.id_status=s.id", $columns);
+// $query = $datatable->get_custom(
+// 	"SELECT p.id, p.nama, 
+// 	c.nama as nama_customers, 
+// 	m.nama as nama_methods, 
+// 	s.nama as nama_status 
+// 	FROM tbl_projects p 
+// 	INNER JOIN tbl_customers c 
+// 	ON p.id_customers=c.id
+// 	inner join tbl_job_methods m
+// 	on p.id_methods=m.id
+// 	inner join tbl_job_status s
+// 	on p.id_status=s.id",
+// 	$columns
+// );
 
 //buat inisialisasi array data
 $data = array();
@@ -39,14 +57,30 @@ foreach ($query	as $value) {
 	//masukan data ke array sesuai kolom table
 	$ResultData[] = $no;
 	$ResultData[] = $value->nama;
-	$ResultData[] = $value->nama_customers;
+	$ResultData[] = "
+		<td class=\"project_progress\">
+			<div class=\"progress progress-sm\">
+				<div class=\"progress-bar bg-green\" role=\"progressbar\" aria-volumenow=\"" . $value->progress . "\" aria-volumemin=\"0\" aria-volumemax=\"100\" style=\"width: " . $value->progress . "%\">
+				</div>
+			</div>
+			<small>
+				" . $value->progress . "% Complete
+			</small>
+		</td>
+	";
+	$ResultData[] = "
+		<span class=\"badge badge-success\">" . $value->nama_status . "</span>
+	";
 
 	//bisa juga pake logic misal jika value tertentu maka outputnya
 
 	//kita bisa buat tombol untuk keperluan edit, delete, dll, 
 	$ResultData[] = "
-	<button type=\"button\" class=\"btn btn-default\" data-toggle=\"modal\" data-target=\"#modal-user-" . $value->id . "\">quick info</button>
-	<a href=\"" . $abs . "/backend/pages/index.php?page=projects-form&act=edit&id=" . $value->id . "\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
+	<a href=" . $abs . "/backend/pages/index.php?page=projects&act=detail&id=" . $value->id . " class=\"btn btn-primary btn-sm\">
+		<i class=\"fas fa-folder\">
+		</i>
+	</a>
+	<a href=\"" . $abs . "/backend/pages/index.php?page=projects&act=form&act=edit&id=" . $value->id . "\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
 	<a onclick=\"return confirm('Apakah yakin data akan di hapus?')\" href=\"" . $abs . "/backend/pages/projects/crud.php?aksi=hapus&id=" . $value->id . "\" class=\"btn btn-danger btn-sm\"><span class=\"fa fa-trash\"></span></a>";
 
 	//memasukan array ke variable $data

@@ -1,0 +1,96 @@
+Time : 20:14:56
+SQLSTATE[42000]: Syntax error or access violation: 1066 Not unique table/alias: 'c'
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+m.nama as nama_methods  
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id 
+inner join tbl_job_methods c on s.id_methods=m.id
+
+Time : 20:07:05
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id' at line 3
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers, 
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id
+
+Time : 20:06:19
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_site_survey s  
+inner join tbl_customers c on p.id_customers=c.id' at line 3
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+from tbl_site_survey s  
+inner join tbl_customers c on p.id_customers=c.id
+
+Time : 20:04:34
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id' at line 3
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id
+
+Time : 20:03:32
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id' at line 3
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id
+
+Time : 20:00:59
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id' at line 3
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id
+
+Time : 19:51:35
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id' at line 3
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id
+
+Time : 19:51:23
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id' at line 3
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id
+
+Time : 19:51:23
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id' at line 3
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id
+
+Time : 19:51:20
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id' at line 3
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id
+
+Time : 19:50:20
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id' at line 3
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id
+
+Time : 19:49:57
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id' at line 3
+Raw SQL : SELECT s.id, s.id_customers, s.access, s.volume, s.id_methods, s.detail,  
+c.nama as nama_customers,  
+from tbl_site_survey s  
+inner join tbl_customers c on s.id_customers=c.id

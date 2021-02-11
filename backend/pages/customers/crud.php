@@ -1,13 +1,16 @@
 <?php
 require '../../../api/panggil.php';
 $tabel = 'tbl_customers';
+
+$nama = trim(htmlspecialchars(strip_tags($_POST['nama'])));
+$telepon = trim(htmlspecialchars(strip_tags($_POST['telepon'])));
+$email = trim(htmlspecialchars(strip_tags($_POST['email'])));
+$alamat = trim(htmlspecialchars(strip_tags($_POST['alamat'])));
+$pic = trim(htmlspecialchars(strip_tags($_POST['pic'])));
+$created_at = date('Y-m-d H:i:s');
+$updated_at = date('Y-m-d H:i:s');
 // proses tambah
 if (!empty($_GET['act'] == 'tambah')) {
-	$nama = strip_tags($_POST['nama']);
-	$telepon = strip_tags($_POST['telepon']);
-	$email = strip_tags($_POST['email']);
-	$alamat = strip_tags($_POST['alamat']);
-	$pic = strip_tags($_POST['pic']);
 
 	# proses insert
 	$data[] = array(
@@ -15,19 +18,16 @@ if (!empty($_GET['act'] == 'tambah')) {
 		'pic'	=> $pic,
 		'telepon'		=> $telepon,
 		'email'			=> $email,
-		'alamat'		=> $alamat
+		'alamat'		=> $alamat,
+		'created_at'		=> $created_at
 	);
 	$proses->tambah_data($tabel, $data);
-	echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=customers"</script>';
+	// echo '<script>alert("Tambah Data Berhasil");window.location="' . $abs . '/backend/pages/index.php?page=customers"</script>';
+	header('location: ' . $abs . '/backend/pages/index.php?page=customers');
 }
 
 // proses edit
 if (!empty($_GET['act'] == 'edit')) {
-	$nama = strip_tags($_POST['nama']);
-	$telepon = strip_tags($_POST['telepon']);
-	$email = strip_tags($_POST['email']);
-	$alamat = strip_tags($_POST['alamat']);
-	$pic = strip_tags($_POST['pic']);
 
 	// jika password tidak diisi
 	if (!$nama == '') {
@@ -37,7 +37,8 @@ if (!empty($_GET['act'] == 'edit')) {
 			'pic'		=> $pic,
 			'telepon'		=> $telepon,
 			'email'			=> $email,
-			'alamat'		=> $alamat
+			'alamat'		=> $alamat,
+			'updated_at'		=> $updated_at
 		);
 	}
 	$where = 'id';
@@ -47,7 +48,7 @@ if (!empty($_GET['act'] == 'edit')) {
 }
 
 // hapus data
-if (!empty($_GET['aksi'] == 'hapus')) {
+if (!empty($_GET['act'] == 'hapus')) {
 	$where = 'id';
 	$id = strip_tags($_GET['id']);
 	$proses->hapus_data($tabel, $where, $id);

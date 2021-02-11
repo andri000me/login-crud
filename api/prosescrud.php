@@ -42,6 +42,12 @@ class prosesCrud
 		return $hasil = $row->fetch();
 	}
 
+	function tampil_data_specified($tabel, $where, $id) {
+		$row = $this->db->prepare("SELECT * FROM $tabel WHERE $where = ?");
+		$row->execute(array($id));
+		return $hasil = $row->fetchAll();
+	}
+
 	function tambah_data($tabel, $data)
 	{
 		// buat array untuk isi values insert sumber kode 

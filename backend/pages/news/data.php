@@ -1,14 +1,12 @@
 <?php
 session_start();
-include "../../lib/config.php";
+// include "../../../lib/config.php";
+include "../../../lib/config-morillo.php";
+include "../../../api/panggil.php";
 
 //kolom apa saja yang akan ditampilkan
 $columns = array(
-	'id',
 	'nama',
-	'status',
-	'tgl',
-	'ket',
 	'acak1',
 );
 
@@ -30,33 +28,34 @@ inner join kecamatan on kabupaten.id_kab=kecamatan.id_kab where provinsi.id_prov
 // on provinsi.id_prov=kabupaten.id_prov
 // inner join kecamatan on kabupaten.id_kab=kecamatan.id_kab ",$columns);
 
-$query = $datatable->get_custom("SELECT * from news as n", $columns);
+$query = $datatable->get_custom("SELECT * from news n", $columns);
 
 //buat inisialisasi array data
 $data = array();
-
+$no = 1;
 foreach ($query	as $value) {
 
 	//array sementara data
 	$ResultData = array();
 
 	//masukan data ke array sesuai kolom table
-	$ResultData[] = $value->id;
+	$ResultData[] = $no;
 	$ResultData[] = $value->nama;
-	$ResultData[] = $value->status;
-	$ResultData[] = $value->tgl;
-	// $ResultData[] = $value->ket;
 	$ResultData[] = $value->acak1;
 
 	//bisa juga pake logic misal jika value tertentu maka outputnya
 
 	//kita bisa buat tombol untuk keperluan edit, delete, dll, 
-	$ResultData[] = "<a href='url_edit/" . $value->id . "' class='btn btn-link'>Edit</a> 
-	<a href='url_edit/" . $value->id . "' class='btn btn-danger btn-sm'>Hapus</a>";
+	$ResultData[] =
+	"
+	<button type=\"button\" class=\"btn btn-default\" data-toggle=\"modal\" data-target=\"#modal-user-" . $value->idkat . "\">quick info</button>
+	<a href=\"" . $abs . "/backend/pages/index.php?page=kategori-form&act=edit&idkat=" . $value->idkat . "\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
+	<a onclick=\"return confirm('Apakah yakin data akan di hapus?')\" href=\"" . $abs . "/backend/pages/kategori/crud.php?act=hapus&idkat=" . $value->idkat . "\" class=\"btn btn-danger btn-sm\"><span class=\"fa fa-trash\"></span></a>";
 
 	//memasukan array ke variable $data
 
 	$data[] = $ResultData;
+	$no++;
 }
 
 //set data

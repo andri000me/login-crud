@@ -16,27 +16,28 @@ if (!empty($_SESSION['ADMIN'])) {
 $idGet = strip_tags($_GET['id']);
 $hasil = $proses->tampil_data_id('tbl_user_level', 'id', $idGet);
 ?>
-<?php if (!empty($_SESSION['ADMIN'])) { ?>
-
+<?php if (!empty($_SESSION['ADMIN']) && $level['id']==1) { ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
         <!-- /.card -->
-
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title"><?=$_GET['act'];?> Level - <?php echo $hasil['nama']; ?></h4>
+            <h4 class="card-title"><?= $_GET['act']; ?> Level - <?php echo $hasil['nama']; ?></h4>
           </div>
           <div class="card-body">
             <!-- form berfungsi mengirimkan data input 
 						dengan method post ke proses crud dengan paramater get aksi edit -->
-            <form action="<?= $abs; ?>/backend/pages/level/crud.php?act=<?=$_GET['act'];?>" method="POST">
-              <div class="form-group">
-                <label>Nama </label>
-                <input type="text" value="<?php echo $hasil['nama']; ?>" class="form-control" name="nama">
-                <input type="hidden" value="<?php echo $hasil['id']; ?>" class="form-control" name="id">
+            <form id="quickForm" action="<?= $abs; ?>/backend/pages/level/crud.php?act=<?= $_GET['act']; ?>" method="POST">
+              <div class="row">
+                <div class="form-group col-4">
+                  <label>Nama </label>
+                  <input type="text" value="<?php echo $hasil['nama']; ?>" class="form-control" name="nama" required>
+                  <input type="hidden" value="<?php echo $hasil['id']; ?>" class="form-control" name="id">
+                </div>
+
               </div>
-              <button class="btn btn-primary btn-md" name="create"><i class="fa fa-edit"> </i> Edit Data</button>
+              <button class="btn btn-primary btn-sm" name="create"><i class="fa fa-edit"> </i> Submit</button>
             </form>
           </div>
         </div>

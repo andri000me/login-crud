@@ -9,14 +9,14 @@ if (!empty($_GET['aksi'] == 'login')) {
 	// panggil fungsi proses_login() yang ada di class prosesCrud()
 	$result = $proses->proses_login($user, $pass);
 	if ($result == 'gagal') {
-		header('location: ' . $abs . '/backend/login.php?get=' . urlencode('gagal maning, gagal maning son'));
+		header('location: ' . $abs . '/backend/index.php?get=' . urlencode('failed'));
 		// echo "<script>window.location='../login.php?get=gagal';</script>";
 	} else {
 		// status yang diberikan 
 		session_start();
 		$_SESSION['ADMIN'] = $result;
 		// status yang diberikan
-		header('location: ' . $abs . '/backend/pages/index.php?page=user');
+		header('location: ' . $abs . '/backend/pages/index.php?page=main-menu');
 		// echo "<script>window.location='".$abs."/backend/user';</script>";
 	}
 }

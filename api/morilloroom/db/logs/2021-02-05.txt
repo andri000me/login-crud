@@ -1,0 +1,18 @@
+Time : 20:32:46
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'k1090803_morilloroom.tbl_req_survey' doesn't exist
+Raw SQL : SELECT rs.id, rs.nama, rs.tgl,
+c.nama as nama_customers
+from tbl_req_survey rs
+inner join tbl_customers c
+on rs.id_customers=c.id
+order by rs.id desc
+
+Time : 20:32:44
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.tgl' in 'field list'
+Raw SQL : SELECT s.id, s.nama, s.id_customers, s.tgl, s.access, s.volume, s.id_methods, s.dtl_obj,
+c.nama as nama_customers, c.pic as nama_pic,
+m.nama as nama_methods 
+from tbl_site_survey s 
+inner join tbl_customers c on s.id_customers=c.id
+inner join tbl_job_methods m on s.id_methods=m.id
+order by id desc

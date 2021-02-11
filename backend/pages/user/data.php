@@ -5,12 +5,12 @@ include "../../../api/panggil.php";
 
 //kolom apa saja yang akan ditampilkan
 $columns = array(
-	'nama_pengguna',
-	'username',
-	'id_level',
-	'telepon',
-	'email',
-	'alamat',
+	'u.nama_pengguna',
+	'u.username',
+	'u.telepon',
+	'u.email',
+	'l.nama',
+	'u.acak',
 );
 
 
@@ -31,7 +31,12 @@ inner join kecamatan on kabupaten.id_kab=kecamatan.id_kab where provinsi.id_prov
 // on provinsi.id_prov=kabupaten.id_prov
 // inner join kecamatan on kabupaten.id_kab=kecamatan.id_kab ",$columns);
 
-$query = $datatable->get_custom("SELECT * from tbl_user as u left join tbl_user_level as l on u.id_level=l.id", $columns);
+$query = $datatable->get_custom("SELECT u.id_login, u.nama_pengguna, u.username, u.telepon, u.email, u.acak,
+l.nama as nama_level
+from tbl_user as u 
+inner join tbl_user_level as l 
+on u.id_level=l.id
+where u.id_login>1", $columns);
 
 //buat inisialisasi array data
 $data = array();
@@ -46,18 +51,24 @@ foreach ($query	as $value) {
 	$ResultData[] = $no;
 	$ResultData[] = $value->nama_pengguna;
 	$ResultData[] = $value->username;
-	$ResultData[] = $value->nama;
 	$ResultData[] = $value->telepon;
 	$ResultData[] = $value->email;
-	// $ResultData[] = $value->alamat;
+	$ResultData[] = "
+		<span class=\"badge badge-success\">" . $value->nama_level . "</span>
+	";
+	if ($fopen=fopen('../../../assets/uploads/images/user/'.$value->acak."-1.jpg", 'r')) {
+		$img="<img src=\"" . $abs . "/assets/uploads/images/user/" . $value->acak . "-1.jpg\" height=\"40\">";
+	} else {
+		$img="<img src=\"" . $abs . "/assets/logo.png\" height=\"40\">";
+	}
+	$ResultData[] = $img;
 
 	//bisa juga pake logic misal jika value tertentu maka outputnya
 
 	//kita bisa buat tombol untuk keperluan edit, delete, dll, 
 	$ResultData[] = "
-	<button type=\"button\" class=\"btn btn-default\" data-toggle=\"modal\" data-target=\"#modal-user-" . $value->id_login . "\">quick info</button>
-	<a href=\"" . $abs . "/backend/pages/index.php?page=user-form&act=edit&id=" . $value->id_login . "\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
-	<a onclick=\"return confirm('Apakah yakin data akan di hapus?')\" href=\"" . $abs . "/backend/pages/user/crud.php?aksi=hapus&id=" . $value->id_login . "\" class=\"btn btn-danger btn-sm\"><span class=\"fa fa-trash\"></span></a>";
+	<a href=\"" . $abs . "/backend/pages/index.php?page=user&act=edit&id_login=" . $value->id_login . "\" class=\"btn btn-success btn-sm\"><span class=\"fa fa-edit\"></span></a>
+	<a onclick=\"return confirm('Apakah yakin data akan di hapus?')\" href=\"" . $abs . "/backend/pages/user/crud.php?act=hapus&id_login=" . $value->id_login . "\" class=\"btn btn-danger btn-sm\"><span class=\"fa fa-trash\"></span></a>";
 
 	//memasukan array ke variable $data
 
