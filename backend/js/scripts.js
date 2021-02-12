@@ -66,7 +66,30 @@ $(function () {
       },
     ],
     ajax: {
-      url: "<?= $abs; ?>/backend/pages/job-methods/data.php",
+      url: "../pages/job-methods/data.php",
+      type: "post", // method  , by default get
+      //bisa kirim data ke server
+      /*data: function ( d ) {
+                  d.jurusan = "3223";
+              },*/
+      error: function (xhr, error, thrown) {
+        console.log(xhr);
+      },
+    },
+  });
+  $("#brands").dataTable({
+    bProcessing: true,
+    bServerSide: true,
+    //disable order dan searching pada tombol aksi
+    columnDefs: [
+      {
+        targets: [0, 2],
+        orderable: false,
+        searchable: false,
+      },
+    ],
+    ajax: {
+      url: "../pages/brands/data.php",
       type: "post", // method  , by default get
       //bisa kirim data ke server
       /*data: function ( d ) {
@@ -348,7 +371,7 @@ $(function () {
       },
     },
   });
-  $("#product").dataTable({
+  $("#products").dataTable({
     responsive: true,
     autoWidth: false,
     bProcessing: true,
@@ -356,13 +379,13 @@ $(function () {
     //disable order dan searching pada tombol aksi
     columnDefs: [
       {
-        targets: [0, 5],
+        targets: [0, 4],
         orderable: false,
         searchable: false,
       },
     ],
     ajax: {
-      url: "../pages/product/data.php",
+      url: "../pages/products/data.php",
       // url: "../../data/ajax/produk.php",
       type: "post", // method  , by default get
       //bisa kirim data ke server

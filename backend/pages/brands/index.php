@@ -6,26 +6,26 @@ if (!empty($_SESSION)) {
 }
 // require 'proses/panggil.php';
 ?>
-<?php if (!empty($_SESSION['ADMIN'])) { ?>
+<?php if (!empty($_SESSION['ADMIN']) && $level['id']==1) { ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
         <!-- /.card -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Produk</h3>
+            <h3 class="card-title">
+              <a href="<?= $abs; ?>/backend/pages/index.php?page=<?= $page; ?>&act=tambah" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a>
+              <?= $data['title']; ?>
+            </h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="produk" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table id="brands" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
                 <tr>
                   <th>#</th>
                   <th>Nama</th>
-                  <th>Kategori</th>
-                  <th>Harga</th>
-                  <th>Gambar</th>
-                  <th></th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>

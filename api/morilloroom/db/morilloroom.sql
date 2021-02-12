@@ -11,98 +11,8 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping structure for table k1090803_morilloroom.tbl_customers
-CREATE TABLE IF NOT EXISTS `tbl_customers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(50) DEFAULT NULL,
-  `pic` varchar(50) DEFAULT NULL,
-  `telepon` varchar(50) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `alamat` text,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
-
--- Dumping data for table k1090803_morilloroom.tbl_customers: ~9 rows (approximately)
-/*!40000 ALTER TABLE `tbl_customers` DISABLE KEYS */;
-REPLACE INTO `tbl_customers` (`id`, `nama`, `pic`, `telepon`, `email`, `alamat`, `created_at`, `updated_at`) VALUES
-	(1, 'Perumahan Casarena Residence', 'bapak/ibu casarena', '021/sekian/0877', 'casarena.residence@gmail.com', 'Jl. Moch. Kahfi II No.3, RT.4/RW.4, Ciganjur, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630', NULL, NULL),
-	(2, 'Masjid Baitul Karim', 'bapak mulyadi', '0899/0812', 'baitul.karim@gmail.com', 'Jalan Cipinang Cimpedak, RT.13/RW.6, Cipinang Cempedak, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13330', NULL, NULL),
-	(3, 'Senayan Park', 'bapak alamsyah', '0899/0813', 'senayan.park@gmail.com', 'Jl. Gerbang Pemuda No.3, RT.1/RW.3, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270', NULL, NULL),
-	(4, 'kantor 3m tambun bekasi', 'pak moh', '0899/0822/0856-9900', 'info@3m.com', 'kantor, Jl. Diponegoro No.3m, Jatimulya, Kec. Tambun Sel., Bekasi, Jawa Barat 17510', NULL, '2021-02-03 11:25:12'),
-	(5, 'kantor DPRD Morotai Maluku Utara', 'bapak rahmat', '0877/0898', 'gubernur@gov.id', 'kediaman gubernur', NULL, '2021-02-10 09:46:39'),
-	(6, 'Jakarta City Hall', 'pak anton', '0877/0856', 'info@jakartacityhall.com', 'Jl. Medan Merdeka Sel. No.8-9, RT.11/RW.2, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110', NULL, '2021-02-03 07:53:47'),
-	(7, 'Rumah Sakit Umum Pusat Fatmawati', 'ibu fatmawati', '0899/0822/0857', 'rsup.fatmawati@gmail.com', 'Jl. RS. Fatmawati Raya No.4, RT.4/RW.9, Cilandak Bar., Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12430', NULL, '2021-02-03 07:53:42'),
-	(8, 'Masjid Raya Baitussalam', 'bapak Salman', '0899/0822', 'baitus.salam@gmail.com', 'Perumahan Billy Moon, Jl. Kelapa Hijau II No.1, RT.1/RW.10, Pd. Klp., Kec. Duren Sawit, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13450', '2021-02-03 07:56:17', NULL),
-	(9, 'Kantor Jasamarga Pondok Gede Timur', 'ibu dibyo', '021-3040/021-8080', 'customer.info@jasamarga.com', 'Jatibening Akses, RT.001/RW.003, Jatibening, Kec. Pondokgede, Kota Bks, Jawa Barat 17412', '2021-02-03 11:22:23', '2021-02-03 11:26:15'),
-	(10, 'Gedung antv tower meruya', 'pak bambang', '021-9090/021-3030', 'tower.meruya@antv.com', 'Kencana Tower, Level 2, Business Park Kebon Jeruk, Jl Raya Meruya Ilir No. 88, RT.1/RW.5, Meruya Utara, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11620', '2021-02-03 11:28:49', NULL),
-	(11, 'pak.udin', 'pak.udin', '123-123', 'pak.udin@gmail.com', 'bogor', '2021-02-05 09:00:17', NULL),
-	(12, 'AHM Cikarang', 'pak ahmad', '0899/0812', 'ahm@honda.co.id', 'cikarang', '2021-02-08 09:22:31', NULL),
-	(13, 'yayasan hidayatulah pusat, jaktim', 'pak ginanjar', '0812/0813', 'info@yayasan.hidayat.com', 'polonia jakarta timur', '2021-02-08 09:30:01', NULL);
-/*!40000 ALTER TABLE `tbl_customers` ENABLE KEYS */;
-
--- Dumping structure for table k1090803_morilloroom.tbl_invoices
-CREATE TABLE IF NOT EXISTS `tbl_invoices` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_projects` int(11) DEFAULT NULL,
-  `no_faktur` varchar(50) DEFAULT NULL,
-  `no_quo` varchar(50) DEFAULT NULL,
-  `tgl` date DEFAULT NULL,
-  `tgl_due` date DEFAULT NULL,
-  `type_payment` varchar(50) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_tbl_invoices_tbl_projects` (`id_projects`),
-  CONSTRAINT `FK_tbl_invoices_tbl_projects` FOREIGN KEY (`id_projects`) REFERENCES `tbl_projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
--- Dumping data for table k1090803_morilloroom.tbl_invoices: ~3 rows (approximately)
-/*!40000 ALTER TABLE `tbl_invoices` DISABLE KEYS */;
-REPLACE INTO `tbl_invoices` (`id`, `id_projects`, `no_faktur`, `no_quo`, `tgl`, `tgl_due`, `type_payment`, `created_at`, `updated_at`) VALUES
-	(2, 10, 'aii/ii-2021/inv027', 'quo-024/ii-2021/jkt', '2021-02-11', '2021-02-18', 'internet banking', '2021-02-11 11:44:23', NULL),
-	(3, 15, 'faktur/sekian', 'quo/sekian', '2021-02-04', '2021-03-11', 'mobile banking', '2021-02-11 11:50:00', NULL),
-	(4, 9, 'faktur/casarena/sekian0010', 'quo/casarena/sekian0011', '2021-02-04', '2021-03-11', 'mobile banking', '2021-02-11 11:56:39', NULL);
-/*!40000 ALTER TABLE `tbl_invoices` ENABLE KEYS */;
-
--- Dumping structure for table k1090803_morilloroom.tbl_job_methods
-CREATE TABLE IF NOT EXISTS `tbl_job_methods` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
-
--- Dumping data for table k1090803_morilloroom.tbl_job_methods: ~6 rows (approximately)
-/*!40000 ALTER TABLE `tbl_job_methods` DISABLE KEYS */;
-REPLACE INTO `tbl_job_methods` (`id`, `nama`) VALUES
-	(1, 'membran bakar'),
-	(2, 'injection'),
-	(3, 'coating'),
-	(4, 'floor hardener'),
-	(5, 'epoxy'),
-	(6, 'sealant');
-/*!40000 ALTER TABLE `tbl_job_methods` ENABLE KEYS */;
-
--- Dumping structure for table k1090803_morilloroom.tbl_job_status
-CREATE TABLE IF NOT EXISTS `tbl_job_status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
--- Dumping data for table k1090803_morilloroom.tbl_job_status: ~6 rows (approximately)
-/*!40000 ALTER TABLE `tbl_job_status` DISABLE KEYS */;
-REPLACE INTO `tbl_job_status` (`id`, `nama`) VALUES
-	(1, 'request material          '),
-	(2, 'material delivery'),
-	(3, 'material arrived on location'),
-	(4, 'on progress'),
-	(5, 'waiting for payment');
-/*!40000 ALTER TABLE `tbl_job_status` ENABLE KEYS */;
-
--- Dumping structure for table k1090803_morilloroom.tbl_products
-CREATE TABLE IF NOT EXISTS `tbl_products` (
+-- Dumping structure for table k1090803_morilloroom.prod
+CREATE TABLE IF NOT EXISTS `prod` (
   `id` int(7) NOT NULL AUTO_INCREMENT,
   `weight_id` int(11) NOT NULL,
   `promo` int(7) DEFAULT NULL,
@@ -147,9 +57,9 @@ CREATE TABLE IF NOT EXISTS `tbl_products` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=372 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table k1090803_morilloroom.tbl_products: 175 rows
-/*!40000 ALTER TABLE `tbl_products` DISABLE KEYS */;
-REPLACE INTO `tbl_products` (`id`, `weight_id`, `promo`, `promo_id`, `kid_alt`, `kid`, `sid`, `bid`, `seq`, `nama`, `nama_eng`, `nama_china`, `rgks`, `rgks_eng`, `ktrg`, `ktrg2`, `ktrg3`, `ktrg_eng`, `ktrg2_eng`, `ktrg3_eng`, `ktrg_china`, `harga_strip`, `harga`, `harga2`, `pub_harga`, `discount`, `kode`, `berat`, `satuan`, `soh1`, `soh2`, `clicked`, `pub`, `status`, `auto_crop`, `acak`, `seo`, `lokasi1`, `type`, `date_created`, `date_modified`) VALUES
+-- Dumping data for table k1090803_morilloroom.prod: 175 rows
+/*!40000 ALTER TABLE `prod` DISABLE KEYS */;
+REPLACE INTO `prod` (`id`, `weight_id`, `promo`, `promo_id`, `kid_alt`, `kid`, `sid`, `bid`, `seq`, `nama`, `nama_eng`, `nama_china`, `rgks`, `rgks_eng`, `ktrg`, `ktrg2`, `ktrg3`, `ktrg_eng`, `ktrg2_eng`, `ktrg3_eng`, `ktrg_china`, `harga_strip`, `harga`, `harga2`, `pub_harga`, `discount`, `kode`, `berat`, `satuan`, `soh1`, `soh2`, `clicked`, `pub`, `status`, `auto_crop`, `acak`, `seo`, `lokasi1`, `type`, `date_created`, `date_modified`) VALUES
 	(178, 0, 1, ',', ',', 38, 0, 1, 0, 'MC Primer WB', '', 'JIS 12 kg/m', '', '', '&lt;p&gt;1. Nama Produk&lt;br /&gt;\r\nMC PRIME&lt;br /&gt;\r\n2. Deskripsi&lt;br /&gt;\r\nMC PRIME berbahan dasar pelarut&amp;nbsp;Bitumen untuk melindungi yang&amp;nbsp;mengandung besi, baja, beton,&amp;nbsp;membrane, asbes yang tahan terhadap&amp;nbsp;cuaca korosi.&lt;br /&gt;\r\n3.&amp;nbsp;Kegunaan&lt;br /&gt;\r\n- Melindungi permukaan besi, baja dan&amp;nbsp;karat dari korosi karena kena oli.&lt;br /&gt;\r\n- Digunakan untuk pelapis anti bocor.&lt;br /&gt;\r\n- Digunakan sebagai primer untuk&amp;nbsp;waterproofing membrane.&lt;br /&gt;\r\n4. Keuntungan&lt;br /&gt;\r\n- Tahan terhadap air dan cuaca.&lt;br /&gt;\r\n- Tahan terhadap berupa bahan kimia,&amp;nbsp;gas Industrial, air garam dan bahan&amp;nbsp;korosi natural didalam tanah.&lt;br /&gt;\r\n5. Pemakaian&lt;br /&gt;\r\nJumlah pemakaian tergantung dari jenis&amp;nbsp;material dan penyerapan permukaan&amp;nbsp;sebagai berikut :&lt;br /&gt;\r\nMetal : 5 &amp;ndash; 6 m2 / liter&lt;br /&gt;\r\nBeton : 2 &amp;ndash; 3 m2 / liter&lt;br /&gt;\r\nPrimer : 3 &amp;ndash; 4 m2 / liter&lt;br /&gt;\r\n6. Cara Penggunaan.&lt;br /&gt;\r\n- Untuk melapisi besi atau baja,&amp;nbsp;permukaan harus dibersihkan&amp;nbsp;terlebih dahulu dari debu, karat&amp;nbsp;sebelum applikasi MC Prime&amp;nbsp;disarankan dua kali lapis.&lt;br /&gt;\r\n- Sebagai pelapis anti bocor untuk&amp;nbsp;permukaan beton sekali untuk&amp;nbsp;primer dan disyaratkan tiga kali&amp;nbsp;lapis jangka waktu lapis pertama&amp;nbsp;dan berikutnya tergantung kondisi&amp;nbsp;cuaca, rata &amp;ndash; rata 1 &amp;ndash; 2 jam.&lt;br /&gt;\r\n- Sebagai primer untuk waterproofing&amp;nbsp;membrane MC Prime dapat&amp;nbsp;diencerkan dengan minyak tanah&amp;nbsp;atau bensin dan si applikasikan&amp;nbsp;dengan roll satu kali lapis ke&amp;nbsp;permukaan beton yang akan&amp;nbsp;diwaterproofing membrane.&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;Untuk memudahkan applikasi di&amp;nbsp;permukaan beton MC Prime bisa&amp;nbsp;dicampur dengan solvent, dengan ratio :&amp;nbsp;40% solvent, 60% MC Prime.&lt;br /&gt;\r\n7. Data Teknis&lt;br /&gt;\r\nBase Bitumen&lt;br /&gt;\r\nSolvent Hydrocarbon Mixture&lt;br /&gt;\r\nColor Black&lt;br /&gt;\r\nConsistency Semi &amp;ndash; Liquid&lt;br /&gt;\r\nSpesific&lt;br /&gt;\r\nGravity&lt;br /&gt;\r\nCoats&lt;br /&gt;\r\nNecessary&lt;br /&gt;\r\n1 &amp;ndash; 2&lt;br /&gt;\r\nDry Residue Approx 60%&lt;br /&gt;\r\nComplete&lt;br /&gt;\r\nHardening&lt;br /&gt;\r\nTime&lt;br /&gt;\r\n1 &amp;ndash; 3 days&lt;br /&gt;\r\nDiffusion&lt;br /&gt;\r\nResistance&lt;br /&gt;\r\nFactor&lt;br /&gt;\r\nApprox 8.000&lt;br /&gt;\r\nSoftening&lt;br /&gt;\r\npoint, Ring&lt;br /&gt;\r\nand Ball Test&lt;br /&gt;\r\nApprox + 950C&lt;br /&gt;\r\nKemasan 22 liter / pail&lt;br /&gt;\r\nWaktu simpan 12 bulan disimpan dalam&lt;br /&gt;\r\nkemasan asli dan belum&lt;br /&gt;\r\nterbuka&lt;br /&gt;\r\nPenyimpanan Tempat kering,&lt;br /&gt;\r\nterlindung dari sinar&lt;br /&gt;\r\nmatahari matahari&lt;br /&gt;\r\nPenyimpanan Tempat kering,&lt;br /&gt;\r\nterlindung dari sinar&lt;br /&gt;\r\nmatahari langsung&lt;br /&gt;\r\n8. Perhatian dalam pemakaian&amp;nbsp;&lt;br /&gt;\r\nMaterial mudah terbakar simpan&amp;nbsp;ditempat yang aman dan jauhkan dari&amp;nbsp;percikan api juga sumber kebakaran&amp;nbsp;lainnya gunakan sarung tangan dan&amp;nbsp;kaca mata dalam bekerja .&lt;/p&gt;', '', NULL, '', NULL, NULL, '&lt;p&gt;JIS 12 kg/m&lt;/p&gt;', '647250', '647250', '', 0, 0.00, 'tm-0001', 20000.00, 1, 99, 100, 1485, 1, 1, 0, '99761_297668_666351', 'MC-Primer-WB', '', '', '2016-05-11 17:13:28', '2018-03-18 23:41:16'),
 	(179, 0, 2, ',', ',', 36, 0, 1, 0, 'MC SEAL', '', 'Type M5 | Diameter 5x5 | Spasi 150x150 | Lembar 5.4x2.1 | Roll 5.4x2.1', '', '', '&lt;p&gt;&lt;strong&gt;Nama Produk&lt;/strong&gt;&lt;br /&gt;\r\nMC SEAL&lt;br /&gt;\r\n&lt;strong&gt;. Deskripsi&lt;/strong&gt;&lt;br /&gt;\r\nMC SEAL satu komponen siap&amp;nbsp;digunakan dan diapplikasikan dengan&amp;nbsp;spatula atau gun dan bukan sealant yang&amp;nbsp;mudah melorot . MC Seal terbuat dari&amp;nbsp;bahan polymer modifikasi bitumen&amp;nbsp;didalam hydro carbon solvent yang&amp;nbsp;mengawetkan menjadi bentuk pasta&amp;nbsp;dengan daya rekat yang sangat baik&amp;nbsp;dengan beton, batu bata, aspal dan&amp;nbsp;material konstruksi lainnya.&amp;nbsp;MC SEAL Dikemas 20 Kg/Pail&lt;br /&gt;\r\n&lt;strong&gt;Kegunaan&lt;/strong&gt;&lt;br /&gt;\r\nMC Seal sangat cocok digunakan&amp;nbsp;untuk menutup dengan mengisi celah&amp;nbsp;pada atap, ujung sambungan&amp;nbsp;waterproofing membrane, menutup&amp;nbsp;area tengah seputar pipa atap, ujung&amp;nbsp;fhinising antara dinding dengan atap,&amp;nbsp;menutup kebocoran pada talang dan&amp;nbsp;lembaran ata, aspal dan membrane.&amp;nbsp;Mengisi celah pada sambungan beton&amp;nbsp;atau aspal yang tidak di inginkan.&lt;br /&gt;\r\n&lt;strong&gt;Keuntungan&lt;/strong&gt;&lt;br /&gt;\r\n- Memiliki pemuaian dan penyerapan&amp;nbsp;yang baik.&lt;br /&gt;\r\n- Memiliki kuat tekan, memanjang&amp;nbsp;dan tahan terhadap mekanik.&lt;br /&gt;\r\n- Lentur dan flexible&lt;br /&gt;\r\n- Daya rekat sangat baik dan tahan&amp;nbsp;lama&lt;br /&gt;\r\n- Ekonomis&lt;br /&gt;\r\n- Satu komponen dan tidak&amp;nbsp;memerlukan pengadukan.&lt;br /&gt;\r\n- Tahan oksidasi&lt;br /&gt;\r\n&lt;strong&gt;&amp;nbsp;Cara Penggunaan.&lt;br /&gt;\r\nPersiapan permukaan&lt;/strong&gt;&lt;br /&gt;\r\nPermukaan harus kering, bersih dan&amp;nbsp;bebas dari kotoran debu, sisa material,&amp;nbsp;oli dan minyak.&lt;br /&gt;\r\n&lt;strong&gt;Isolasi&lt;/strong&gt;&lt;br /&gt;\r\nDalam applikasi primer dan sealant&amp;nbsp;digunakan isolasi untuk menutup /&amp;nbsp;melindungi permukaan bagian samping&amp;nbsp;yang akan di sealant.&lt;br /&gt;\r\n&lt;strong&gt;Primer&lt;/strong&gt;&lt;br /&gt;\r\nDibawah kondisi normal tidak&amp;nbsp;syaratkan untuk diprimer, tetapi jika&amp;nbsp;kondisi permukaan sangat kotor di&amp;nbsp;anjurkan memakai primer dengan&amp;nbsp;menggunakan MC Seal primer atau&amp;nbsp;sejenisnya.&lt;br /&gt;\r\n&lt;strong&gt;Applikasi&lt;/strong&gt;&lt;br /&gt;\r\nBuka pail MC Seal selanjutnya&amp;nbsp;menyiapkan peralatan spatula atau&amp;nbsp;trowel dan kondisi area sambungan&amp;nbsp;yang akan di kerjakan : melindungi&amp;nbsp;dengan cara menutup area samping&amp;nbsp;yang akan di sealant dengan isolasi. Isi&amp;nbsp;sambungan dengan MC Seal sampai&amp;nbsp;penuh, ditekan dan di rapikan. Setelah&amp;nbsp;applikasi selesai isolasi tutup&amp;nbsp;dilepaskan dan dibersihkan.&lt;br /&gt;\r\n&lt;strong&gt;Pembersihan&lt;/strong&gt;&lt;br /&gt;\r\nPeralatan di bersihkan dengan solvent&amp;nbsp;(minyak tanah atau bensin).&lt;br /&gt;\r\n&lt;strong&gt;&amp;nbsp;Perhatian dalam pemakaian&lt;/strong&gt;&lt;br /&gt;\r\nMaterial mudah terbakar simpan&amp;nbsp;ditempat yang aman dan jauhkan dari&amp;nbsp;percikan api juga sumber kebakaran&amp;nbsp;lainnya gunakan sarung tangan dan&amp;nbsp;kaca mata dalam bekerja .&lt;br /&gt;\r\n&lt;strong&gt;Perhatian&lt;/strong&gt;&lt;br /&gt;\r\n&lt;strong&gt;Dalam lembaran teknis&lt;/strong&gt;&lt;br /&gt;\r\nPenjelasan dan rekomendasi untuk produk tersebut di atas&amp;nbsp;adalah berdasarkan hasil tes-tes yang dapat dipercaya,&amp;nbsp;dikombinasi dengan pengetahuan dan pengelaman dalam&amp;nbsp;penanganan produk tersebut bila digunakan sesuai instruksi.&amp;nbsp;Akan tetapi, tidak ada garansi akan ketepatan, dikarenakan&amp;nbsp;faktor-faktor antara lain kondisi lapangan yang tidak sama,&amp;nbsp;perbedaan bahan baku, jenis alat yang digunakan dan cara&amp;nbsp;pengerjaan. Karena hal-hal tersebut, produk-produk yang&amp;nbsp;dijual hanya disertai garansi terbatas, dengan asumsi bahwa&amp;nbsp;pemakai akan melakukan tes tersendiri yang disesuaikan&amp;nbsp;dengan tujuan pemakaian.&amp;nbsp;&lt;/p&gt;', '', NULL, '', NULL, NULL, '&lt;p&gt;Type M5 | Diameter 5x5 | Spasi 150x150 | Lembar 5.4x2.1 | Roll 5.4x2.1&lt;/p&gt;', '586000', '586000', '', 0, 0.00, 'tm-0002', 18000.00, 2, 100, 100, 654, 1, 1, 0, '92742_376342_210601', 'MC-SEAL', '', '', '2016-05-23 13:52:51', '2018-03-18 23:41:07'),
 	(180, 0, 3, ',', ',', 36, 0, 6, 0, 'Pentens T-250 Colorful Wear-Resistant Surface Coating', '', 'Type M4 | Diameter 4x4 | Spasi 150x150 | Lembar 5.4x2.1 | Roll 5.4x2.1', '', '', '&lt;p&gt;Pentens&amp;reg; T-250 is a specially formulated mineral based coating system of inorganic nature for both exterior and interior use. As a decorative and protective finish, Pentens&amp;reg; T-250 has outstanding durability. When applied correctly to a suitable backing, it will neither flake nor peel. What makes Pentens&amp;reg; T-250 durable is an acrylic-based resin and selected pigments to which are added mica, hollow ceramics, and fine hard aggregates, to ensure long life and special anti-slip properties. Pentens&amp;reg; T-250 also contains a biocide which combats bacterial and fungus growth.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;img alt=\\&quot;\\&quot; src=\\&quot;https://static.wixstatic.com/media/3abd8d_69663447e6d344209e3dd503ee82adfe.jpg/v1/fill/w_910,h_1288,al_c,q_85,usm_0.66_1.00_0.01/3abd8d_69663447e6d344209e3dd503ee82adfe.jpg\\&quot; style=\\&quot;height:1288px; width:910px\\&quot; /&gt;&lt;/p&gt;', '', NULL, '', NULL, NULL, '&lt;p&gt;Type M4 | Diameter 4x4 | Spasi 150x150 | Lembar 5.4x2.1 | Roll 5.4x2.1&lt;/p&gt;', '1831600', '1831600', '', 0, 0.00, 'tm-0003', 20000.00, 2, 1000, 1000, 876, 1, 1, 0, '672058_287322_960571', 'Pentens-T250-Colorful-WearResistant-Surface-Coating', '', '', '2016-05-23 13:53:30', '2018-03-18 23:40:57'),
@@ -325,6 +235,182 @@ REPLACE INTO `tbl_products` (`id`, `weight_id`, `promo`, `promo_id`, `kid_alt`, 
 	(369, 0, NULL, '', ',', 6, 0, 15, 0, 'Ravaproof APP 4,5 KG GREEN', '', NULL, '', '', '&lt;p&gt;Ravaproof APP 4,5 KG GREEN&lt;/p&gt;', '', NULL, '', NULL, NULL, NULL, '550000', '550000', '', NULL, 0.00, '', 4500.00, NULL, 0, 0, 19, 1, 1, 1, '269625_477300_870575', 'Ravaproof-APP-45-KG-GREEN', '', '', '2021-01-15 11:42:17', '2021-01-18 15:58:07'),
 	(370, 0, NULL, '', ',', 4, 0, 16, 0, 'Membrane Geco Sanded', '', NULL, '', '', '&lt;p&gt;Geco Waterproofing Systems&lt;/p&gt;\r\n\r\n&lt;p&gt;Membrane Geco Sanded 2.400.000/roll&lt;/p&gt;', '', NULL, '', NULL, NULL, NULL, '2400000', '2400000', '', NULL, 0.00, '', 0.00, NULL, 0, 0, 27, 1, 1, 0, '490507_354832_969648', 'Membrane-Geco-Sanded', '', '', '2021-01-18 15:00:02', '2021-01-25 15:05:42'),
 	(371, 0, NULL, '', ',', 4, 0, 16, 0, 'Membran Geco Granule Green', '', NULL, '', '', '&lt;p&gt;Geco Waterproofing Systems&lt;/p&gt;\r\n\r\n&lt;p&gt;Membran Geco Granule green 2.500.000/roll&lt;/p&gt;', '', NULL, '', NULL, NULL, NULL, '2500000', '2500000', '', NULL, 0.00, '', 0.00, NULL, 0, 0, 25, 1, 1, 0, '855582_764657_344276', 'Membran-Geco-Granule-Green', '', '', '2021-01-18 15:00:35', '2021-01-25 15:05:24');
+/*!40000 ALTER TABLE `prod` ENABLE KEYS */;
+
+-- Dumping structure for table k1090803_morilloroom.tbl_brands
+CREATE TABLE IF NOT EXISTS `tbl_brands` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table k1090803_morilloroom.tbl_brands: ~13 rows (approximately)
+/*!40000 ALTER TABLE `tbl_brands` DISABLE KEYS */;
+REPLACE INTO `tbl_brands` (`id`, `nama`) VALUES
+	(1, 'BASF'),
+	(2, 'Bitumi'),
+	(3, 'Casali'),
+	(4, 'Fosroc'),
+	(5, 'Geco'),
+	(6, 'ITLS'),
+	(7, 'Morillo'),
+	(8, 'Pentens'),
+	(9, 'Protech'),
+	(10, 'Ravaproof'),
+	(11, 'Shell'),
+	(12, 'Sika'),
+	(13, 'Ultrachem');
+/*!40000 ALTER TABLE `tbl_brands` ENABLE KEYS */;
+
+-- Dumping structure for table k1090803_morilloroom.tbl_customers
+CREATE TABLE IF NOT EXISTS `tbl_customers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) DEFAULT NULL,
+  `pic` varchar(50) DEFAULT NULL,
+  `telepon` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `alamat` text,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table k1090803_morilloroom.tbl_customers: ~13 rows (approximately)
+/*!40000 ALTER TABLE `tbl_customers` DISABLE KEYS */;
+REPLACE INTO `tbl_customers` (`id`, `nama`, `pic`, `telepon`, `email`, `alamat`, `created_at`, `updated_at`) VALUES
+	(1, 'test', '', '', '', '', NULL, '2021-02-12 13:23:44'),
+	(2, 'Masjid Baitul Karim', 'bapak mulyadi', '0899/0812', 'baitul.karim@gmail.com', 'Jalan Cipinang Cimpedak, RT.13/RW.6, Cipinang Cempedak, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13330', NULL, NULL),
+	(3, 'Senayan Park', 'bapak alamsyah', '0899/0813', 'senayan.park@gmail.com', 'Jl. Gerbang Pemuda No.3, RT.1/RW.3, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270', NULL, NULL),
+	(4, 'kantor 3m tambun bekasi', 'pak moh', '0899/0822/0856-9900', 'info@3m.com', 'kantor, Jl. Diponegoro No.3m, Jatimulya, Kec. Tambun Sel., Bekasi, Jawa Barat 17510', NULL, '2021-02-03 11:25:12'),
+	(5, 'kantor DPRD Morotai Maluku Utara', 'bapak rahmat', '0877/0898', 'gubernur@gov.id', 'kediaman gubernur', NULL, '2021-02-10 09:46:39'),
+	(6, 'Jakarta City Hall', 'pak anton', '0877/0856', 'info@jakartacityhall.com', 'Jl. Medan Merdeka Sel. No.8-9, RT.11/RW.2, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110', NULL, '2021-02-03 07:53:47'),
+	(7, 'Rumah Sakit Umum Pusat Fatmawati', 'ibu fatmawati', '0899/0822/0857', 'rsup.fatmawati@gmail.com', 'Jl. RS. Fatmawati Raya No.4, RT.4/RW.9, Cilandak Bar., Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12430', NULL, '2021-02-03 07:53:42'),
+	(8, 'Masjid Raya Baitussalam', 'bapak Salman', '0899/0822', 'baitus.salam@gmail.com', 'Perumahan Billy Moon, Jl. Kelapa Hijau II No.1, RT.1/RW.10, Pd. Klp., Kec. Duren Sawit, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13450', '2021-02-03 07:56:17', NULL),
+	(9, 'Kantor Jasamarga Pondok Gede Timur', 'ibu dibyo', '021-3040/021-8080', 'customer.info@jasamarga.com', 'Jatibening Akses, RT.001/RW.003, Jatibening, Kec. Pondokgede, Kota Bks, Jawa Barat 17412', '2021-02-03 11:22:23', '2021-02-03 11:26:15'),
+	(10, 'Gedung antv tower meruya', 'pak bambang', '021-9090/021-3030', 'tower.meruya@antv.com', 'Kencana Tower, Level 2, Business Park Kebon Jeruk, Jl Raya Meruya Ilir No. 88, RT.1/RW.5, Meruya Utara, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11620', '2021-02-03 11:28:49', NULL),
+	(11, 'pak.udin', 'pak.udin', '123-123', 'pak.udin@gmail.com', 'bogor', '2021-02-05 09:00:17', NULL),
+	(12, 'AHM Cikarang', 'pak ahmad', '0899/0812', 'ahm@honda.co.id', 'cikarang', '2021-02-08 09:22:31', NULL),
+	(13, 'yayasan hidayatulah pusat, jaktim', 'pak ginanjar', '0812/0813', 'info@yayasan.hidayat.com', 'polonia jakarta timur', '2021-02-08 09:30:01', NULL);
+/*!40000 ALTER TABLE `tbl_customers` ENABLE KEYS */;
+
+-- Dumping structure for table k1090803_morilloroom.tbl_invoices
+CREATE TABLE IF NOT EXISTS `tbl_invoices` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_projects` int(11) DEFAULT NULL,
+  `no_faktur` varchar(50) DEFAULT NULL,
+  `no_quo` varchar(50) DEFAULT NULL,
+  `tgl` date DEFAULT NULL,
+  `tgl_due` date DEFAULT NULL,
+  `id_payments` int(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_tbl_invoices_tbl_projects` (`id_projects`),
+  KEY `FK_tbl_invoices_tbl_payments` (`id_payments`),
+  CONSTRAINT `FK_tbl_invoices_tbl_payments` FOREIGN KEY (`id_payments`) REFERENCES `tbl_payments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_tbl_invoices_tbl_projects` FOREIGN KEY (`id_projects`) REFERENCES `tbl_projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table k1090803_morilloroom.tbl_invoices: ~3 rows (approximately)
+/*!40000 ALTER TABLE `tbl_invoices` DISABLE KEYS */;
+REPLACE INTO `tbl_invoices` (`id`, `id_projects`, `no_faktur`, `no_quo`, `tgl`, `tgl_due`, `id_payments`, `created_at`, `updated_at`) VALUES
+	(2, 10, 'aii/ii-2021/inv027', 'quo-024/ii-2021/jkt', '2021-02-11', '2021-02-18', 1, '2021-02-11 11:44:23', '2021-02-11 16:16:20'),
+	(3, 15, 'faktur/sekian', 'quo/sekian', '2021-02-04', '2021-03-11', 2, '2021-02-11 11:50:00', NULL),
+	(4, 9, 'faktur/casarena/sekian0010', 'quo/casarena/sekian0011', '2021-02-04', '2021-03-11', 3, '2021-02-11 11:56:39', NULL);
+/*!40000 ALTER TABLE `tbl_invoices` ENABLE KEYS */;
+
+-- Dumping structure for table k1090803_morilloroom.tbl_job_methods
+CREATE TABLE IF NOT EXISTS `tbl_job_methods` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table k1090803_morilloroom.tbl_job_methods: ~6 rows (approximately)
+/*!40000 ALTER TABLE `tbl_job_methods` DISABLE KEYS */;
+REPLACE INTO `tbl_job_methods` (`id`, `nama`) VALUES
+	(1, 'membran bakar'),
+	(2, 'injection'),
+	(3, 'coating'),
+	(4, 'floor hardener'),
+	(5, 'epoxy'),
+	(6, 'sealant');
+/*!40000 ALTER TABLE `tbl_job_methods` ENABLE KEYS */;
+
+-- Dumping structure for table k1090803_morilloroom.tbl_job_status
+CREATE TABLE IF NOT EXISTS `tbl_job_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table k1090803_morilloroom.tbl_job_status: ~5 rows (approximately)
+/*!40000 ALTER TABLE `tbl_job_status` DISABLE KEYS */;
+REPLACE INTO `tbl_job_status` (`id`, `nama`) VALUES
+	(1, 'request material          '),
+	(2, 'material delivery'),
+	(3, 'material arrived on location'),
+	(4, 'on progress'),
+	(5, 'waiting for payment');
+/*!40000 ALTER TABLE `tbl_job_status` ENABLE KEYS */;
+
+-- Dumping structure for table k1090803_morilloroom.tbl_misc
+CREATE TABLE IF NOT EXISTS `tbl_misc` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) DEFAULT NULL,
+  `telepon` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `alamat` text,
+  `note` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table k1090803_morilloroom.tbl_misc: ~1 rows (approximately)
+/*!40000 ALTER TABLE `tbl_misc` DISABLE KEYS */;
+REPLACE INTO `tbl_misc` (`id`, `nama`, `telepon`, `email`, `alamat`, `note`) VALUES
+	(1, 'PT Morillo Internasional Indonesia', '+6221-2278-5500/+6221-782-9080', 'customer.info@morillo.co.id', 'Jl. Lebak Bulus I No. 2 Jakarta Selatan12440 Indonesia', 'Catatan:Semua pembayaran hanya dapat dilakukan melalui kasir, transfer ke rekening Abdullah Bin Alwi, atau melalui orang yang ditunjuk untuk mengambil uang dengan membawa Surat Kuasa dari PT Morillo Internasional Indonesia');
+/*!40000 ALTER TABLE `tbl_misc` ENABLE KEYS */;
+
+-- Dumping structure for table k1090803_morilloroom.tbl_payments
+CREATE TABLE IF NOT EXISTS `tbl_payments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table k1090803_morilloroom.tbl_payments: ~6 rows (approximately)
+/*!40000 ALTER TABLE `tbl_payments` DISABLE KEYS */;
+REPLACE INTO `tbl_payments` (`id`, `nama`) VALUES
+	(1, 'Pembayaran Kartu Kredit/Visa'),
+	(2, 'Transfer Bank'),
+	(3, 'Debit Visa'),
+	(4, 'Rekening Bersama'),
+	(5, 'Cash On Delivery (COD)'),
+	(6, 'E-Wallet'),
+	(7, 'Tunai di Gerai Retail');
+/*!40000 ALTER TABLE `tbl_payments` ENABLE KEYS */;
+
+-- Dumping structure for table k1090803_morilloroom.tbl_products
+CREATE TABLE IF NOT EXISTS `tbl_products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_brands` int(11) DEFAULT NULL,
+  `id_methods` int(11) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `harga` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_tbl_products_tbl_brands` (`id_brands`),
+  KEY `FK_tbl_products_tbl_job_methods` (`id_methods`),
+  CONSTRAINT `FK_tbl_products_tbl_brands` FOREIGN KEY (`id_brands`) REFERENCES `tbl_brands` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_tbl_products_tbl_job_methods` FOREIGN KEY (`id_methods`) REFERENCES `tbl_job_methods` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table k1090803_morilloroom.tbl_products: ~2 rows (approximately)
+/*!40000 ALTER TABLE `tbl_products` DISABLE KEYS */;
+REPLACE INTO `tbl_products` (`id`, `id_brands`, `id_methods`, `nama`, `harga`, `created_at`, `updated_at`) VALUES
+	(1, 13, NULL, 'test', '560000', NULL, '2021-02-12 13:26:22'),
+	(2, 12, NULL, 'again', '90000', NULL, '2021-02-12 13:26:48');
 /*!40000 ALTER TABLE `tbl_products` ENABLE KEYS */;
 
 -- Dumping structure for table k1090803_morilloroom.tbl_projects
@@ -333,11 +419,9 @@ CREATE TABLE IF NOT EXISTS `tbl_projects` (
   `id_marketing` int(4) DEFAULT NULL,
   `id_supervisor` int(4) DEFAULT NULL,
   `id_site_survey` int(4) DEFAULT NULL,
-  `nama` varchar(100) DEFAULT NULL,
-  `id_methods` int(4) DEFAULT NULL,
-  `volume` float DEFAULT NULL,
-  `progress` int(11) DEFAULT NULL,
   `id_status` int(4) DEFAULT NULL,
+  `nama` varchar(100) DEFAULT NULL,
+  `progress` int(11) DEFAULT NULL,
   `budget_estimation` varchar(50) DEFAULT NULL,
   `budget_spent` varchar(50) DEFAULT NULL,
   `duration` varchar(50) DEFAULT NULL,
@@ -345,61 +429,71 @@ CREATE TABLE IF NOT EXISTS `tbl_projects` (
   `updated_by` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_tbl_projects_tbl_site_survey` (`id_site_survey`),
+  KEY `FK_tbl_projects_tbl_user_2` (`id_supervisor`),
+  KEY `FK_tbl_projects_tbl_job_status` (`id_status`),
+  KEY `FK_tbl_projects_tbl_user` (`id_marketing`),
+  CONSTRAINT `FK_tbl_projects_tbl_job_status` FOREIGN KEY (`id_status`) REFERENCES `tbl_job_status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_tbl_projects_tbl_site_survey` FOREIGN KEY (`id_site_survey`) REFERENCES `tbl_site_survey` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_tbl_projects_tbl_user` FOREIGN KEY (`id_marketing`) REFERENCES `tbl_user` (`id_login`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_tbl_projects_tbl_user_2` FOREIGN KEY (`id_supervisor`) REFERENCES `tbl_user` (`id_login`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table k1090803_morilloroom.tbl_projects: ~12 rows (approximately)
 /*!40000 ALTER TABLE `tbl_projects` DISABLE KEYS */;
-REPLACE INTO `tbl_projects` (`id`, `id_marketing`, `id_supervisor`, `id_site_survey`, `nama`, `id_methods`, `volume`, `progress`, `id_status`, `budget_estimation`, `budget_spent`, `duration`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-	(1, 49, 45, 10, 'proyek rumah pak udin surabaya', 1, 1000, 1, 1, '10000000', '9500000', '5', NULL, NULL, NULL, '2021-02-08 10:33:15'),
-	(2, 50, 46, 9, 'proyek rumah pak udin bogor', 6, 500, 10, 2, '11000000', '9000000', '4', NULL, NULL, NULL, '2021-02-08 10:33:32'),
-	(3, 49, 47, 7, 'proyek masjid bait al karim', 6, 800, 60, 5, '9500000', '8500000', '3', NULL, NULL, NULL, '2021-02-08 10:33:48'),
-	(4, 50, 48, 6, 'proyek jakarta city hall', 6, 1350, 25, 5, '11500000', '10000000', '7', NULL, NULL, NULL, '2021-02-08 10:34:05'),
-	(5, 49, 45, 12, 'pasang membran geco di AHM Cikarang', 3, 4500, 25, 4, '', '', '', NULL, NULL, NULL, '2021-02-08 09:25:50'),
-	(7, 50, 46, 13, 'proyek yayasan hidayatulah, jaktim', 6, 650, 30, 5, '', '', '', NULL, NULL, NULL, '2021-02-08 09:32:35'),
-	(8, 49, 47, 3, 'proyek di RS Fatmawati', 6, 1200, 60, 5, '', '', '', NULL, NULL, NULL, '2021-02-08 09:33:13'),
-	(9, 51, 48, 4, 'Proyek casarena residence', 6, 1500, 75, 5, '', '', '', NULL, NULL, NULL, '2021-02-08 09:34:58'),
-	(10, 49, 45, 14, 'pasang membran di senayan park', 6, 5500, 90, 5, '', '', '', NULL, NULL, '2021-02-02 05:12:49', '2021-02-08 09:38:10'),
-	(11, 50, 46, 15, 'proyek danau buatan 1,5 hektar', 6, 2100, 20, 5, '', '', '', NULL, NULL, '2021-02-02 05:13:23', '2021-02-08 09:41:49'),
-	(13, NULL, 47, 11, 'proyek di kediaman gubernur dki', 4, 600, 65, 3, '', '', '', NULL, NULL, '2021-02-02 07:31:47', '2021-02-08 03:44:49'),
-	(15, 51, 48, 11, 'istana polonia cipinang cempedak jaktim', 2, 1500, 30, 4, '', '', '', NULL, NULL, '2021-02-02 07:33:54', '2021-02-08 09:43:58');
+REPLACE INTO `tbl_projects` (`id`, `id_marketing`, `id_supervisor`, `id_site_survey`, `id_status`, `nama`, `progress`, `budget_estimation`, `budget_spent`, `duration`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+	(1, 49, 45, 10, 1, 'proyek rumah pak udin surabaya', 1, '10000000', '9500000', '5', NULL, NULL, NULL, '2021-02-12 08:14:18'),
+	(2, 50, 46, 9, 2, 'proyek rumah pak udin bogor', 10, '11000000', '9000000', '4', NULL, NULL, NULL, '2021-02-08 10:33:32'),
+	(3, 49, 47, 7, 5, 'proyek masjid bait al karim', 60, '9500000', '8500000', '3', NULL, NULL, NULL, '2021-02-08 10:33:48'),
+	(4, 50, 48, 6, 5, 'proyek jakarta city hall', 25, '11500000', '10000000', '7', NULL, NULL, NULL, '2021-02-08 10:34:05'),
+	(5, 49, 45, 12, 4, 'pasang membran geco di AHM Cikarang', 25, '', '', '', NULL, NULL, NULL, '2021-02-08 09:25:50'),
+	(7, 50, 46, 13, 5, 'proyek yayasan hidayatulah, jaktim', 30, '', '', '', NULL, NULL, NULL, '2021-02-08 09:32:35'),
+	(8, 49, 47, 3, 5, 'proyek di RS Fatmawati', 60, '', '', '', NULL, NULL, NULL, '2021-02-08 09:33:13'),
+	(9, 51, 48, 4, 5, 'Proyek casarena residence', 75, '', '', '', NULL, NULL, NULL, '2021-02-08 09:34:58'),
+	(10, 49, 45, 14, 5, 'pasang membran di senayan park', 90, '', '', '', NULL, NULL, '2021-02-02 05:12:49', '2021-02-08 09:38:10'),
+	(11, 50, 46, 15, 5, 'proyek danau buatan 1,5 hektar', 20, '10175000', '11', '10', NULL, NULL, '2021-02-02 05:13:23', '2021-02-12 10:06:17'),
+	(13, NULL, 47, 11, 3, 'proyek di kediaman gubernur dki', 65, '', '', '', NULL, NULL, '2021-02-02 07:31:47', '2021-02-08 03:44:49'),
+	(15, 51, 48, 11, 4, 'istana polonia cipinang cempedak jaktim', 30, '', '', '', NULL, NULL, '2021-02-02 07:33:54', '2021-02-08 09:43:58');
 /*!40000 ALTER TABLE `tbl_projects` ENABLE KEYS */;
 
 -- Dumping structure for table k1090803_morilloroom.tbl_projects_progress
 CREATE TABLE IF NOT EXISTS `tbl_projects_progress` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_projects` varchar(4) NOT NULL DEFAULT '',
+  `id_projects` int(11) NOT NULL DEFAULT '0',
   `job_plan` text,
   `job_repair` text,
   `note` text,
-  `tgl` date,
+  `tgl` date DEFAULT NULL,
   `acak` varchar(50) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `FK_tbl_projects_progress_tbl_projects` (`id_projects`),
+  CONSTRAINT `FK_tbl_projects_progress_tbl_projects` FOREIGN KEY (`id_projects`) REFERENCES `tbl_projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table k1090803_morilloroom.tbl_projects_progress: ~18 rows (approximately)
 /*!40000 ALTER TABLE `tbl_projects_progress` DISABLE KEYS */;
 REPLACE INTO `tbl_projects_progress` (`id`, `id_projects`, `job_plan`, `job_repair`, `note`, `tgl`, `acak`, `created_at`, `updated_at`) VALUES
-	(1, '15', 'perbaikan lantai 1', 'perbaikan lantai 1', 'perbaikan lantai 1', '2021-01-31', NULL, '2021-02-03 04:52:26', '2021-02-08 07:28:25'),
-	(2, '15', 'lantai 1', 'lantai 2', 'lantai 3', '2021-02-01', NULL, '2021-02-03 04:53:40', '2021-02-08 07:28:34'),
-	(3, '13', 'pekerjaan hari rabu', 'pekerjaan hari rabu', 'pekerjaan hari rabu', '2021-02-02', NULL, '2021-02-03 05:38:09', '2021-02-08 07:28:41'),
-	(4, '1', 'pekerjaan hari kamis jumat', 'pekerjaan hari kamis jumat', 'pekerjaan hari kamis jumat', '2021-02-03', '3054-5887-7400', '2021-02-03 05:56:03', '2021-02-09 04:07:35'),
-	(5, '2', 'pekerjaan hari jumat', 'pekerjaan hari jumat', 'pekerjaan hari jumat', '2021-02-04', '4023-6350-6599', '2021-02-03 06:01:15', '2021-02-09 03:51:15'),
-	(6, '11', 'pekerjaan hari sabtu', 'pekerjaan hari sabtu', 'pekerjaan hari sabtu', '2021-02-05', NULL, '2021-02-03 06:38:22', '2021-02-08 07:29:09'),
-	(7, '15', 'pekerjaan hari minggu', 'pekerjaan hari minggu', 'pekerjaan hari minggu', '2021-02-06', NULL, '2021-02-03 06:39:01', '2021-02-08 07:29:17'),
-	(9, '8', 'finishing lantai 2', 'finishing lantai 2', 'finishing lantai 2', '2021-02-07', NULL, '2021-02-03 11:10:20', '2021-02-08 07:29:31'),
-	(10, '11', 'testing', 'testing', 'testing', NULL, NULL, '2021-02-03 12:16:55', NULL),
-	(11, '2', 'plan lantai 1', 'repair lantai 1', 'note lantai 1', NULL, NULL, '2021-02-08 06:27:18', NULL),
-	(12, '1', 'plan lantai 2', 'repair lantai 2', 'note lantai 2', '2020-12-27', '2475-1347-5318', '2021-02-08 06:27:48', '2021-02-09 03:33:03'),
-	(13, '1', 'plan', 'repair', 'note', '2020-12-28', '7750-9313-2568', '2021-02-08 06:49:55', '2021-02-09 03:33:17'),
-	(14, '', 'perum ps', 'perum ps', 'perum ps', '2020-12-27', NULL, '2021-02-08 08:53:02', NULL),
-	(15, '3', 'perumahan ps', 'perumahan ps', 'perumahan ps', '2020-12-27', '9358-9941-2213', '2021-02-08 08:54:41', '2021-02-09 05:05:15'),
-	(17, '10', 'persiapan pemasangan membran', 'persiapan pemasangan membran', 'persiapan pemasangan membran', '2020-11-29', NULL, '2021-02-08 09:45:36', NULL),
-	(18, '10', 'masuk proses pengerjaan', 'masuk proses pengerjaan', 'masuk proses pengerjaan', '2020-11-30', NULL, '2021-02-08 09:50:45', NULL),
-	(19, '10', 'finishing', 'finishing', 'finishing', '2020-11-09', NULL, '2021-02-08 09:53:49', NULL),
-	(20, '1', 'update hari senin', 'update hari selasa', '', '2020-12-27', '5949-236-8088', '2021-02-09 03:59:00', '2021-02-09 04:09:05');
+	(1, 15, 'perbaikan lantai 1', 'perbaikan lantai 1', 'perbaikan lantai 1', '2021-01-31', NULL, '2021-02-03 04:52:26', '2021-02-08 07:28:25'),
+	(2, 15, 'lantai 1', 'lantai 2', 'lantai 3', '2021-02-01', NULL, '2021-02-03 04:53:40', '2021-02-08 07:28:34'),
+	(3, 13, 'pekerjaan hari rabu', 'pekerjaan hari rabu', 'pekerjaan hari rabu', '2021-02-02', NULL, '2021-02-03 05:38:09', '2021-02-08 07:28:41'),
+	(4, 1, 'pekerjaan hari kamis jumat', 'pekerjaan hari kamis jumat', 'pekerjaan hari kamis jumat', '2021-02-03', '3054-5887-7400', '2021-02-03 05:56:03', '2021-02-09 04:07:35'),
+	(5, 2, 'pekerjaan hari jumat', 'pekerjaan hari jumat', 'pekerjaan hari jumat', '2021-02-04', '4023-6350-6599', '2021-02-03 06:01:15', '2021-02-09 03:51:15'),
+	(6, 11, 'pekerjaan hari sabtu', 'pekerjaan hari sabtu', 'pekerjaan hari sabtu', '2021-02-05', NULL, '2021-02-03 06:38:22', '2021-02-08 07:29:09'),
+	(7, 15, 'pekerjaan hari minggu', 'pekerjaan hari minggu', 'pekerjaan hari minggu', '2021-02-06', NULL, '2021-02-03 06:39:01', '2021-02-08 07:29:17'),
+	(9, 8, 'finishing lantai 2', 'finishing lantai 2', 'finishing lantai 2', '2021-02-07', NULL, '2021-02-03 11:10:20', '2021-02-08 07:29:31'),
+	(10, 11, 'testing', 'testing', 'testing', NULL, NULL, '2021-02-03 12:16:55', NULL),
+	(11, 2, 'plan lantai 1', 'repair lantai 1', 'note lantai 1', NULL, NULL, '2021-02-08 06:27:18', NULL),
+	(12, 1, 'plan lantai 2', 'repair lantai 2', 'note lantai 2', '2020-12-27', '2475-1347-5318', '2021-02-08 06:27:48', '2021-02-09 03:33:03'),
+	(13, 1, 'plan', 'repair', 'note', '2020-12-28', '7750-9313-2568', '2021-02-08 06:49:55', '2021-02-09 03:33:17'),
+	(14, 1, 'perum ps', 'perum ps', 'perum ps', '2020-12-27', NULL, '2021-02-08 08:53:02', NULL),
+	(15, 3, 'perumahan ps', 'perumahan ps', 'perumahan ps', '2020-12-27', '9358-9941-2213', '2021-02-08 08:54:41', '2021-02-09 05:05:15'),
+	(17, 10, 'persiapan pemasangan membran', 'persiapan pemasangan membran', 'persiapan pemasangan membran', '2020-11-29', NULL, '2021-02-08 09:45:36', NULL),
+	(18, 10, 'masuk proses pengerjaan', 'masuk proses pengerjaan', 'masuk proses pengerjaan', '2020-11-30', NULL, '2021-02-08 09:50:45', NULL),
+	(19, 10, 'finishing', 'finishing', 'finishing', '2020-11-09', NULL, '2021-02-08 09:53:49', NULL),
+	(20, 1, 'update hari senin', 'update hari selasa', '', '2020-12-27', '5949-236-8088', '2021-02-09 03:59:00', '2021-02-09 04:09:05');
 /*!40000 ALTER TABLE `tbl_projects_progress` ENABLE KEYS */;
 
 -- Dumping structure for table k1090803_morilloroom.tbl_req_material
@@ -411,10 +505,12 @@ CREATE TABLE IF NOT EXISTS `tbl_req_material` (
   `total` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `FK_tbl_req_material_tbl_site_survey` (`id_site_survey`),
+  CONSTRAINT `FK_tbl_req_material_tbl_site_survey` FOREIGN KEY (`id_site_survey`) REFERENCES `tbl_site_survey` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
--- Dumping data for table k1090803_morilloroom.tbl_req_material: ~10 rows (approximately)
+-- Dumping data for table k1090803_morilloroom.tbl_req_material: ~13 rows (approximately)
 /*!40000 ALTER TABLE `tbl_req_material` DISABLE KEYS */;
 REPLACE INTO `tbl_req_material` (`id`, `id_site_survey`, `id_products`, `jumlah`, `total`, `created_at`, `updated_at`) VALUES
 	(1, 15, 371, 3, 7500000, '2021-02-10 07:22:10', '2021-02-11 04:21:31'),
@@ -425,7 +521,11 @@ REPLACE INTO `tbl_req_material` (`id`, `id_site_survey`, `id_products`, `jumlah`
 	(9, 12, 369, 2, 1100000, '2021-02-10 11:02:51', '2021-02-11 04:22:38'),
 	(10, 4, 305, 2, 490000, '2021-02-11 04:08:54', '2021-02-11 04:22:46'),
 	(12, 4, 371, 4, 10000000, '2021-02-11 06:39:36', NULL),
-	(13, 4, 369, 4, 2200000, '2021-02-11 06:47:49', NULL);
+	(13, 4, 369, 4, 2200000, '2021-02-11 06:47:49', NULL),
+	(15, 15, 368, 3, 1575000, '2021-02-12 08:44:32', NULL),
+	(16, 6, 207, 2, 3000000, '2021-02-12 11:40:11', NULL),
+	(17, 6, 206, 4, 5600000, '2021-02-12 11:40:30', NULL),
+	(18, 4, 371, 4, 10000000, '2021-02-12 11:50:41', NULL);
 /*!40000 ALTER TABLE `tbl_req_material` ENABLE KEYS */;
 
 -- Dumping structure for table k1090803_morilloroom.tbl_req_survey
@@ -456,6 +556,7 @@ CREATE TABLE IF NOT EXISTS `tbl_site_survey` (
   `dtl_obj` text,
   `tgl` date DEFAULT NULL,
   `acak` varchar(50) DEFAULT NULL,
+  `budget_estimation` varchar(50) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -465,21 +566,21 @@ CREATE TABLE IF NOT EXISTS `tbl_site_survey` (
 
 -- Dumping data for table k1090803_morilloroom.tbl_site_survey: ~14 rows (approximately)
 /*!40000 ALTER TABLE `tbl_site_survey` DISABLE KEYS */;
-REPLACE INTO `tbl_site_survey` (`id`, `id_customers`, `nama`, `access`, `volume`, `dtl_obj`, `tgl`, `acak`, `created_at`, `updated_at`) VALUES
-	(2, 5, 'survey ke kantor DPRD Morotai Maluku Utara', 'jalan aspal', '655', 'detail sekali', '2021-01-31', '2858-9724-9143', '2021-02-02 13:12:46', '2021-02-10 09:47:07'),
-	(3, 7, 'survey RS Fatmawati', 'again', '230', 'hati2 licin', '2020-11-04', '276-5250-1115', '2021-02-02 13:20:11', '2021-02-10 09:42:29'),
-	(4, 1, 'survey casarena residence', 'jalan aspal', '950', 'jalan aspal', '2020-11-03', '4870-1900-2959', '2021-02-03 07:45:30', '2021-02-11 04:04:34'),
-	(5, 8, 'survey masjid bait al salam', 'jalan berbatu tajam', '950', 'jalan berbatu tajam', '2020-11-29', '5825-6274-9181', '2021-02-03 08:09:32', '2021-02-10 09:20:03'),
-	(6, 6, 'survey jakarta city hall', 'jalan aspal', '1200', 'jalan aspal', '2020-11-02', '3734-666-6409', '2021-02-03 08:12:29', '2021-02-10 09:20:35'),
-	(7, 2, 'survey ke lokasi masjid baitul karim', 'jalan lebar', '1500', 'jalan lebar', '2020-11-01', '5589-4804-591', '2021-02-03 08:13:00', '2021-02-10 09:20:21'),
-	(8, 10, 'survey ke tempat pak bambang', 'jalan aspal', '900', 'jalan aspal', '2020-12-25', '5901-6591-242', '2021-02-04 12:02:25', '2021-02-05 09:43:56'),
-	(9, 11, 'survey rumah pak.udin bogor', 'pak.udin bogor', '600', 'pak.udin bogor', '2021-02-05', '262-4516-5355', '2021-02-05 09:02:13', '2021-02-05 09:43:41'),
-	(10, 11, 'survey rumah pak.udin surabaya', 'pak.udin surabaya', '1350', 'pak.udin surabaya', '2021-01-05', '1740-2111-7946', '2021-02-05 09:03:57', '2021-02-05 09:33:08'),
-	(11, 9, 'survey ke lokasi istana polonia', 'jalan kerikil', '850', 'detail objection', '2021-01-31', '2212-292-7280', '2021-02-05 13:03:01', '2021-02-11 04:02:19'),
-	(12, 12, 'AHM Cikarang', 'jalan aspal', '1550', 'AHM Cikarang', '2021-02-01', '7315-1570-556', '2021-02-08 09:24:58', '2021-02-11 03:59:12'),
-	(13, 13, 'survey ke yayasan hidayatulah', 'jalan aspal', '950', 'survey ke yayasan hidayatulah', '2020-11-30', '9655-1646-5982', '2021-02-08 09:31:18', NULL),
-	(14, 3, 'senayan park jakarta', 'jalan lancar', '1350', 'senayan park jakarta', '2020-12-28', '6222-1758-3143', '2021-02-08 09:36:57', NULL),
-	(15, 11, 'survey danau buatan', 'jalan licin', '1500', 'survey lokasi danau buatan seluas 1,5 hektar', '2020-12-29', '563-2670-1292', '2021-02-08 09:41:13', NULL);
+REPLACE INTO `tbl_site_survey` (`id`, `id_customers`, `nama`, `access`, `volume`, `dtl_obj`, `tgl`, `acak`, `budget_estimation`, `created_at`, `updated_at`) VALUES
+	(2, 5, 'survey ke kantor DPRD Morotai Maluku Utara', 'jalan aspal', '655', 'detail sekali', '2021-01-31', '2858-9724-9143', '0', '2021-02-02 13:12:46', '2021-02-10 09:47:07'),
+	(3, 7, 'survey RS Fatmawati', 'again', '230', 'hati2 licin', '2020-11-04', '276-5250-1115', '0', '2021-02-02 13:20:11', '2021-02-10 09:42:29'),
+	(4, 1, 'survey casarena residence', 'jalan aspal', '950', 'jalan aspal', '2020-11-03', '4870-1900-2959', '0', '2021-02-03 07:45:30', '2021-02-11 04:04:34'),
+	(5, 8, 'survey masjid bait al salam', 'jalan berbatu tajam', '950', 'jalan berbatu tajam', '2020-11-29', '5825-6274-9181', '0', '2021-02-03 08:09:32', '2021-02-10 09:20:03'),
+	(6, 6, 'survey jakarta city hall', 'jalan aspal', '1200', 'jalan aspal', '2020-11-02', '3734-666-6409', '0', '2021-02-03 08:12:29', '2021-02-10 09:20:35'),
+	(7, 2, 'survey ke lokasi masjid baitul karim', 'jalan lebar', '1500', 'jalan lebar', '2020-11-01', '5589-4804-591', '0', '2021-02-03 08:13:00', '2021-02-10 09:20:21'),
+	(8, 10, 'survey ke tempat pak bambang', 'jalan aspal', '900', 'jalan aspal', '2020-12-25', '5901-6591-242', '0', '2021-02-04 12:02:25', '2021-02-05 09:43:56'),
+	(9, 11, 'survey rumah pak.udin bogor', 'pak.udin bogor', '600', 'pak.udin bogor', '2021-02-05', '262-4516-5355', '0', '2021-02-05 09:02:13', '2021-02-05 09:43:41'),
+	(10, 11, 'survey rumah pak.udin surabaya', 'pak.udin surabaya', '1350', 'pak.udin surabaya', '2021-01-05', '1740-2111-7946', '0', '2021-02-05 09:03:57', '2021-02-05 09:33:08'),
+	(11, 9, 'survey ke lokasi istana polonia', 'jalan kerikil', '850', 'detail objection', '2021-01-31', '2212-292-7280', '0', '2021-02-05 13:03:01', '2021-02-11 04:02:19'),
+	(12, 12, 'AHM Cikarang', 'jalan aspal', '1550', 'AHM Cikarang', '2021-02-01', '7315-1570-556', '0', '2021-02-08 09:24:58', '2021-02-11 03:59:12'),
+	(13, 13, 'survey ke yayasan hidayatulah', 'jalan aspal', '950', 'survey ke yayasan hidayatulah', '2020-11-30', '9655-1646-5982', '0', '2021-02-08 09:31:18', NULL),
+	(14, 3, 'senayan park jakarta', 'jalan lancar', '1350', 'senayan park jakarta', '2020-12-28', '6222-1758-3143', '0', '2021-02-08 09:36:57', NULL),
+	(15, 11, 'survey danau buatan', 'jalan licin', '1500', 'survey lokasi danau buatan seluas 1,5 hektar', '2020-12-29', '563-2670-1292', '0', '2021-02-08 09:41:13', NULL);
 /*!40000 ALTER TABLE `tbl_site_survey` ENABLE KEYS */;
 
 -- Dumping structure for table k1090803_morilloroom.tbl_site_survey_methods
@@ -496,7 +597,7 @@ CREATE TABLE IF NOT EXISTS `tbl_site_survey_methods` (
   CONSTRAINT `FK_tbl_site_survey_methods_tbl_site_survey` FOREIGN KEY (`id_site_survey`) REFERENCES `tbl_site_survey` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
--- Dumping data for table k1090803_morilloroom.tbl_site_survey_methods: ~7 rows (approximately)
+-- Dumping data for table k1090803_morilloroom.tbl_site_survey_methods: ~8 rows (approximately)
 /*!40000 ALTER TABLE `tbl_site_survey_methods` DISABLE KEYS */;
 REPLACE INTO `tbl_site_survey_methods` (`id`, `id_site_survey`, `id_methods`, `created_at`, `updated_at`) VALUES
 	(16, 14, 6, '2021-02-09 09:52:38', NULL),
@@ -533,13 +634,13 @@ REPLACE INTO `tbl_user` (`id_login`, `id_level`, `username`, `password`, `nama_p
 	(1, 1, 'andijaya', 'd311e5c9b81927e2e30645eb1577b4d44631844e', 'andijaya su', '085695860639', 'andijayawizard@gmail.com', 'depok', '1234-1234-1234', NULL, '2021-02-09 07:54:22'),
 	(43, 2, 'manager1', 'a5c297c15e40ac3881db51277613aea3731b673a', 'manager1', '2345', 'manager1@gmail.com', '', '9024-249-6431', '2021-02-04 08:18:56', '2021-02-04 10:24:27'),
 	(44, 2, 'manager2', 'd2c9a46b3870e03e3c45c6a6ba0d7a574f50c698', 'manager2', '1234', 'manager2@gmail.com', '', '4369-3099-9621', '2021-02-04 08:30:12', '2021-02-09 07:16:32'),
-	(45, 3, 'supervisor1', '7ff95a4d2848b62916f5a0b3167ee2e67f03c934', 'anton spv1', '0899/0813', 'supervisor1@gmail.com', 'jakarta timur', '3451-4040-8556', '2021-02-04 10:30:19', '2021-02-08 03:27:25'),
-	(46, 3, 'supervisor2', '4a2b9a9f409557b5b814033f8a926098d9ac6549', 'budi spv2', '0812/0813', 'supervisor2@gmail.com', 'jakarta utara', '6849-8387-7086', '2021-02-04 10:33:57', '2021-02-08 03:27:05'),
-	(47, 3, 'supervisor3', '9183266ecbe4b12744985bbf6c7e692ffe9a9615', 'cecep spv3', '0812/0856', 'supervisor3@gmail.com', 'jakarta selatan', '4915-1088-4679', '2021-02-08 03:28:12', NULL),
-	(48, 3, 'supervisor4', 'eaf30b37f09d0a03083d7fee2ff9df9f223c5f2f', 'deni spv4', '0899/0855', 'supervisor4@yahoo.com', 'jakarta barat', '3502-4637-9560', '2021-02-08 03:29:26', NULL),
-	(49, 6, 'marketing1', 'bb64b8e5a37f72f2dc47dac4e122b23ef9282b93', 'eri marketing1', '', 'marketing1@morillo.co.id', 'jakarta pusat', '5353-2043-5216', '2021-02-08 05:16:31', NULL),
-	(50, 6, 'marketing2', '0e4fd716000ee442cc6bcea6783ac62e0e5a3d47', 'farhan marketing2', '', 'marketing2@morillo.co.id', 'bogor selatan', '3811-6500-3703', '2021-02-08 05:17:04', NULL),
-	(51, 6, 'marketing3', '9c2ec9e059dd1e6fa3173166115f6cc6b62273cc', 'hasan', '123-456', 'hasan@yahoo.com', 'bekasi timur', '2175-2724-3456', '2021-02-08 09:34:07', NULL),
+	(45, 3, 'supervisor1', '7ff95a4d2848b62916f5a0b3167ee2e67f03c934', 'anton', '0899/0813', 'supervisor1@gmail.com', 'jakarta timur', '3451-4040-8556', '2021-02-04 10:30:19', '2021-02-12 07:59:46'),
+	(46, 3, 'supervisor2', '4a2b9a9f409557b5b814033f8a926098d9ac6549', 'budi', '0812/0813', 'supervisor2@gmail.com', 'jakarta utara', '6849-8387-7086', '2021-02-04 10:33:57', '2021-02-12 07:59:55'),
+	(47, 3, 'supervisor3', '9183266ecbe4b12744985bbf6c7e692ffe9a9615', 'chandra', '0812/0856', 'supervisor3@gmail.com', 'jakarta selatan', '4915-1088-4679', '2021-02-08 03:28:12', '2021-02-12 08:00:06'),
+	(48, 3, 'supervisor4', 'eaf30b37f09d0a03083d7fee2ff9df9f223c5f2f', 'deni', '0899/0855', 'supervisor4@yahoo.com', 'jakarta barat', '3502-4637-9560', '2021-02-08 03:29:26', '2021-02-12 08:00:15'),
+	(49, 6, 'marketing1', 'bb64b8e5a37f72f2dc47dac4e122b23ef9282b93', 'eri', '', 'marketing1@morillo.co.id', 'jakarta pusat', '5353-2043-5216', '2021-02-08 05:16:31', '2021-02-12 08:00:25'),
+	(50, 6, 'marketing2', '0e4fd716000ee442cc6bcea6783ac62e0e5a3d47', 'farhan', '', 'marketing2@morillo.co.id', 'bogor selatan', '3811-6500-3703', '2021-02-08 05:17:04', '2021-02-12 08:00:38'),
+	(51, 6, 'marketing3', '9c2ec9e059dd1e6fa3173166115f6cc6b62273cc', 'ginanjar', '123-456', 'hasan@yahoo.com', 'bekasi timur', '2175-2724-3456', '2021-02-08 09:34:07', '2021-02-12 08:00:49'),
 	(52, 5, 'accounting1', '42a84322ba192816f4974c7ae0e8d012bba2d2ef', 'accounting1', '', 'accounting1@morillo.co.id', '', '1518-3359-2338', '2021-02-10 08:55:15', NULL),
 	(53, 4, 'warehouse1', '437427e3accb949f1e1610140b1f5ad45022d676', 'warehouse1', '', 'warehouse1@morillo.co.id', '', '8557-9349-7338', '2021-02-10 08:55:42', NULL);
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
@@ -559,7 +660,7 @@ REPLACE INTO `tbl_user_level` (`id`, `nama`) VALUES
 	(3, 'supervisor'),
 	(4, 'warehouse'),
 	(5, 'accounting & admin'),
-	(6, 'marketing &amp; sales representative');
+	(6, 'marketing');
 /*!40000 ALTER TABLE `tbl_user_level` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

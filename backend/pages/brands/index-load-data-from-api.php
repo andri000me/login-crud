@@ -7,7 +7,6 @@ if (!empty($_SESSION)) {
 // require 'proses/panggil.php';
 ?>
 <?php if (!empty($_SESSION['ADMIN'])) { ?>
-
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
@@ -15,7 +14,8 @@ if (!empty($_SESSION)) {
 				<div class="card">
 					<div class="card-header">
 						<h3 class="card-title">
-							<a href="<?= $abs; ?>/backend/pages/index.php?page=<?= $page; ?>-form&act=tambah" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a>
+              <a href="<?= $abs; ?>/backend/pages/index.php?page=<?= $page; ?>&act=tambah" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a>
+              <?= $data['title']; ?>
 						</h3>
 					</div>
 					<!-- /.card-header -->
@@ -25,14 +25,12 @@ if (!empty($_SESSION)) {
 								<tr>
 									<th>#</th>
 									<th>Nama</th>
-									<th>Kategori</th>
-									<th>Gambar</th>
-									<!-- <th>Action</th> -->
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
-								$api_categories_list = $api_url_morillo . '/4dMinMrl/api/produk/list.php';
+								$api_categories_list = $api_url . '/level/list.php';
 								$json_list = @file_get_contents($api_categories_list);
 								$array = json_decode($json_list, true);
 								$result = isset($array['result']) ? $array['result'] : array();
@@ -44,10 +42,17 @@ if (!empty($_SESSION)) {
 								?>
 									<tr>
 										<td><?= $no; ?></td>
-										<td><?= $arr['nama_pro']; ?></td>
 										<td><?= $arr['nama']; ?></td>
 										<td>
-											<img src="<?= $api_url_morillo; ?>/images/produk/<?= $arr['acak1']; ?>" height="40">
+											<a href="<?= $abs; ?>/backend/pages/index.php?page=level-form&act=edit&id=<?= $arr['id']; ?>" class="btn btn-info btn-sm">
+												<i class="fas fa-pencil-alt">
+												</i>
+											</a>
+											<a onclick="return confirm('Apakah yakin data akan di hapus?')" href="<?= $abs; ?>/backend/pages/level/crud.php?act=hapus&id=<?= $arr['id']; ?>" class="btn btn-danger btn-sm">
+												<i class="fas fa-trash">
+												</i>
+											</a>
+											<!-- <?= $link_edit . ' ' . $link_delete; ?> -->
 										</td>
 									</tr>
 								<?php
@@ -58,9 +63,7 @@ if (!empty($_SESSION)) {
 								<tr>
 									<th>#</th>
 									<th>Nama</th>
-									<th>Kategori</th>
-									<th>Gambar</th>
-									<!-- <th>Action</th> -->
+									<th>Action</th>
 								</tr>
 							</tfoot>
 						</table>

@@ -9,6 +9,7 @@ $columns = array(
 	'rm.id_site_survey',
 	'rm.id_products',
 	'rm.jumlah',
+	'rm.total',
 	'ss.nama',
 );
 
@@ -19,7 +20,7 @@ $columns = array(
 // 	$where="";
 // }
 
-$query = $datatable->get_custom("SELECT rm.id, rm.id_products, rm.jumlah, 
+$query = $datatable->get_custom("SELECT rm.id, rm.id_products, rm.jumlah, rm.total,
 	ss.nama as nama_site_survey, 
 	p.nama as nama_products, 
 	p.harga as harga 
@@ -47,7 +48,7 @@ foreach ($query	as $value) {
 	$ResultData[] = $value->nama_products;
 	$ResultData[] = $value->jumlah;
 	$ResultData[] = number_format($value->harga, 0, '.', '.'); 
-	$ResultData[] = number_format($value->jumlah * $value->harga, 0, '.', '.'); 
+	$ResultData[] = number_format($value->total, 0, '.', '.'); 
 
 	//bisa juga pake logic misal jika value tertentu maka outputnya
 

@@ -35,7 +35,12 @@ switch ($page) {
     else require "projects-progress/index.php"; 
     break;
   case 'job-methods':
-    include "job-methods/index.php";
+    if ($_GET['act'] == "tambah" || $_GET['act'] == "edit") require "job-methods/form.php";
+    else require "job-methods/index.php"; 
+    break;
+  case 'brands':
+    if ($_GET['act'] == "tambah" || $_GET['act'] == "edit") require "brands/form.php";
+    else require "brands/index.php"; 
     break;
   case 'invoices':
     if ($_GET['act'] == "tambah" || $_GET['act'] == "edit") require "invoices/form.php";
@@ -66,26 +71,9 @@ switch ($page) {
   case 'kategori-form':
     include "kategori/form.php";
     break;
-  case 'product':
-    if ($_GET['act'] == "tambah" || $_GET['act'] == "edit") require "product/form.php";
-    else require "product/index.php"; 
+  case 'products':
+    if ($_GET['act'] == "tambah" || $_GET['act'] == "edit") require "products/form.php";
+    else require "products/index.php"; 
     break;
-  case 'news':
-    include "news/index.php";
-    break;
-  case 'news-form':
-    include "news/form.php";
-    break;
-  case 'news-detail':
-    include "news/detail.php";
-    break;
-
-  case 'projects-gallery':
-    include "projects-gallery/index.php";
-    break;
-  case 'projects-gallery-form':
-    include "projects-gallery/form.php";
-    break;
-
 }
 ?>

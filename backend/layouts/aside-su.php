@@ -81,12 +81,6 @@ if ($level['id']<>1) {
                 </a>
               </li> -->
               <!-- <li class="nav-item">
-                <a href="<?= $abs; ?>/backend/pages/index.php?page=job-methods" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Job Methods</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="<?= $abs; ?>/backend/pages/index.php?page=job-status" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Job Status</p>
@@ -134,21 +128,27 @@ if ($level['id']<>1) {
                   <p>Invoices</p>
                 </a>
               </li>
-              <!-- <li class="nav-header">tokomaterial.co.id</li>
+              <li class="nav-header">Products</li>
               <li class="nav-item">
-                <a href="<?= $abs; ?>/backend/pages/index.php?page=product" class="nav-link">
+                <a href="<?= $abs; ?>/backend/pages/index.php?page=job-methods" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Product</p>
-                </a>
-              </li> -->
-
-              <!-- <li class="nav-header">morillo.co.id</li>
-              <li class="nav-item">
-                <a href="<?= $abs; ?>/backend/pages/index.php?page=news" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>News</p>
+                  <p>Job Methods</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?= $abs; ?>/backend/pages/index.php?page=brands" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Brands</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $abs; ?>/backend/pages/index.php?page=products" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Products</p>
+                </a>
+              </li>
+
+              <!-- <li class="nav-header">morillo.co.id</li>
               <li class="nav-item">
                 <a href="<?= $abs; ?>/backend/pages/index.php?page=projects-gallery" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

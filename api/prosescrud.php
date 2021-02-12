@@ -42,9 +42,9 @@ class prosesCrud
 		return $hasil = $row->fetch();
 	}
 
-	function tampil_data_specified($tabel, $where, $id) {
-		$row = $this->db->prepare("SELECT * FROM $tabel WHERE $where = ?");
-		$row->execute(array($id));
+	function tampil_data_specified($kolom, $tabel, $where) {
+		$row = $this->db->prepare("SELECT $kolom FROM $tabel WHERE $where");
+		$row->execute();
 		return $hasil = $row->fetchAll();
 	}
 

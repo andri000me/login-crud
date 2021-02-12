@@ -21,6 +21,8 @@ $supervisor = $proses->tampil_data_id('tbl_user', 'id_login', $hasil['id_supervi
 $tbl_site_survey = $proses->tampil_data_id('tbl_site_survey', 'id', $hasil['id_site_survey']);
 $tbl_customers = $proses->tampil_data_id('tbl_customers', 'id', $tbl_site_survey['id_customers']);
 $tbl_job_methods = $proses->tampil_data_id('tbl_job_methods', 'id', $tbl_site_survey['id_methods']);
+$tbl_req_material = $proses->tampil_data_specified('*', 'tbl_req_material', 'id_site_survey='.$hasil['id_site_survey']);
+
 ?>
 <?php if (!empty($_SESSION['ADMIN'])) { ?>
   <div class="container-fluid">
@@ -67,6 +69,45 @@ $tbl_job_methods = $proses->tampil_data_id('tbl_job_methods', 'id', $tbl_site_su
             </div>
             <div class="row">
               <div class="col-12">
+                <h4>Applied Product</h4>
+                <table id="req-material-specified-" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Produk</th>
+                      <th>Jumlah</th>
+                      <th>Harga (Rp.)</th>
+                      <th>Total (Rp.)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $i=1;
+                    foreach ($tbl_req_material as $arr) {
+                      $tbl_products = $proses->tampil_data_id('tbl_products', 'id', $arr['id_products']);
+                      $total[$i]=$arr['total'];
+                      ?>
+                      <tr>
+                        <td><?=$i;?></td>
+                        <td><?=$tbl_products['nama'];?></td>
+                        <td><?=$arr['jumlah'];?></td>
+                        <td><?=number_format($tbl_products['harga'], 0, ',', '.');?></td>
+                        <td><?=number_format($arr['total'], 0, ',', '.');?></td>
+                      </tr>
+                    <?php $i++;}?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="4">Total (Rp.)
+                      <td>
+                        <?php
+                        $total=array_sum($total);
+                        echo number_format($total, 0, '.', '.');
+                        ?>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
                 <p class="text-sm">
                   <a href="<?= $abs; ?>/backend/pages/index.php?page=projects-progress&act=tambah&id_projects=<?= $_GET['id']; ?>" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a> Progress
                 </p>

@@ -6,15 +6,25 @@ $id_marketing = trim(htmlspecialchars(strip_tags($_POST['id_marketing'])));
 $id_supervisor = trim(htmlspecialchars(strip_tags($_POST['id_supervisor'])));
 $id_site_survey = trim(htmlspecialchars(strip_tags($_POST['id_site_survey'])));
 $nama = trim(htmlspecialchars(strip_tags($_POST['nama'])));
-$id_methods = trim(htmlspecialchars(strip_tags($_POST['id_methods'])));
 $id_status = trim(htmlspecialchars(strip_tags($_POST['id_status'])));
 $progress = trim(htmlspecialchars(strip_tags($_POST['progress'])));
-$volume = trim(htmlspecialchars(strip_tags($_POST['volume'])));
-$budget_estimation = trim(htmlspecialchars(strip_tags($_POST['budget_estimation'])));
+// $id_methods = trim(htmlspecialchars(strip_tags($_POST['id_methods'])));
+// $volume = trim(htmlspecialchars(strip_tags($_POST['volume'])));
 $budget_spent = trim(htmlspecialchars(strip_tags($_POST['budget_spent'])));
 $duration = trim(htmlspecialchars(strip_tags($_POST['duration'])));
 $created_at = date('Y-m-d H:i:s');
 $updated_at = date('Y-m-d H:i:s');
+
+$tbl_req_material = $proses->tampil_data_specified('*', 'tbl_req_material', 'id_site_survey='.$id_site_survey);
+$i=1;
+foreach ($tbl_req_material as $arr) {
+  $tbl_products = $proses->tampil_data_id('tbl_products', 'id', $arr['id_products']);
+  $total[$i]=$arr['total'];
+  $i++;
+}
+$total=array_sum($total);
+$budget_estimation = $total;
+
 // proses tambah
 if (!empty($_GET['act'] == 'tambah')) {
 

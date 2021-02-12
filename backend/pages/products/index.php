@@ -6,8 +6,7 @@ if (!empty($_SESSION)) {
 }
 // require 'proses/panggil.php';
 ?>
-<?php if (!empty($_SESSION['ADMIN'])) { ?>
-
+<?php if (!empty($_SESSION['ADMIN']) && $level['id'] == 1 || $level['id'] == 2) { ?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
@@ -15,19 +14,19 @@ if (!empty($_SESSION)) {
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">
-              <a href="<?= $abs; ?>/backend/pages/index.php?page=<?= $page; ?>-form&act=tambah" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a>
+              <a href="<?= $abs; ?>/backend/pages/index.php?page=<?= $page; ?>&act=tambah" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a>
+              <?= $data['title']; ?>
             </h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="projects" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table id="products" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
                 <tr>
                   <th>#</th>
                   <th>Nama</th>
-                  <th>Customers</th>
-                  <th>Metode</th>
-                  <th>Customers</th>
+                  <th>Brand</th>
+                  <th>Harga (Rp.)</th>
                   <th>Action</th>
                 </tr>
               </thead>

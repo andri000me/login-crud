@@ -16,7 +16,7 @@ if (!empty($_SESSION['ADMIN'])) {
 $idGet = strip_tags($_GET['id']);
 $hasil = $proses->tampil_data_id('tbl_site_survey', 'id', $idGet);
 
-$tbl_req_material = $proses->tampil_data_specified('tbl_req_material', 'id_site_survey', $idGet);
+$tbl_req_material = $proses->tampil_data_specified('*', 'tbl_req_material', 'id_site_survey='.$idGet);
 $tbl_customers = $proses->tampil_data_id('tbl_customers', 'id', $hasil['id_customers']);
 ?>
 <?php if (!empty($_SESSION['ADMIN'])) { ?>
@@ -58,7 +58,7 @@ $tbl_customers = $proses->tampil_data_id('tbl_customers', 'id', $hasil['id_custo
             <div class="row">
               <div class="col-12">
                 <p class="text-sm">
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-lg">
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-lg-<?=$idGet;?>">
                     <i class="fas fa-plus">
                     </i>
                     Tambah Material Request
@@ -152,7 +152,7 @@ $tbl_customers = $proses->tampil_data_id('tbl_customers', 'id', $hasil['id_custo
   </div>
 <?php } ?>
 
-<div class="modal fade" id="modal-lg">
+<div class="modal fade" id="modal-lg-<?=$idGet;?>">
   <div class="modal-dialog modal-lg">
     <?php include "req-material/form-modal.php";?>
   </div>
