@@ -17,15 +17,13 @@ $idGet = strip_tags($_GET['id']);
 $hasil = $proses->tampil_data_id('tbl_job_methods', 'id', $idGet);
 ?>
 <?php if (!empty($_SESSION['ADMIN'])) { ?>
-
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
         <!-- /.card -->
-
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title"><?= $_GET['act']; ?> job methods - <?php echo $hasil['nama']; ?></h4>
+            <h4 class="card-title"><?= $_GET['act']; ?> <?=$data['title'];?> / <?=$hasil['nama']; ?></h4>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
