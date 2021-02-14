@@ -5,6 +5,15 @@ $(function () {
   const urlParams=new URLSearchParams(queryString);
   const id_projects = urlParams.get("id");
   const id_site_survey = urlParams.get("id");
+  const msg = urlParams.get("msg");
+
+  if (msg=='import-success') {
+    toastr.success('excel file uploaded successfully');
+    // Toast.fire({
+    //   icon: 'success',
+    //   title: 'excel file uploaded successfully'
+    // })
+  }
 
   // console.log(api_url_morillo_news);
   $("#news").dataTable({
