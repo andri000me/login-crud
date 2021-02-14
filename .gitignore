@@ -1,4 +1,3 @@
 node_modules
 admin-lte
-admin-lte305
-json
+/vendor/

@@ -1,0 +1,12 @@
+{
+    "name": "lenovo/morilloroom",
+    "authors": [
+        {
+            "name": "andijayawizard",
+            "email": "andijayawizard@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.16"
+    }
+}

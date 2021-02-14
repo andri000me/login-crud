@@ -14,6 +14,20 @@ if (!empty($_SESSION)) {
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">
+              <form action="<?=$abs;?>/lib/import/import-products.php" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="exampleInputFile">Upload excel file (.xls)</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input-" name="filepegawai" id="exampleInputFile" required="">
+                      <!-- <label class="custom-file-label" for="exampleInputFile">Choose file</label> -->
+                    </div>
+                    <div class="input-group-append">
+                      <input type="submit" value="Upload" class="input-group-text" />
+                    </div>
+                  </div>
+                </div>
+              </form>
               <a href="<?= $abs; ?>/backend/pages/index.php?page=<?= $page; ?>&act=tambah" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Tambah</a>
               <?= $data['title']; ?>
             </h3>
