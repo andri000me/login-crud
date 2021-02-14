@@ -14,6 +14,9 @@ $(function () {
     //   title: 'excel file uploaded successfully'
     // })
   }
+  if (msg=='delete-success') {
+    toastr.success('data deleted successfully');
+  }
 
   // console.log(api_url_morillo_news);
   $("#news").dataTable({

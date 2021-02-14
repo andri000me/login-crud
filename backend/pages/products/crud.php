@@ -45,5 +45,5 @@ if (!empty($_GET['act'] == 'hapus')) {
 	$where = 'id';
 	$id = strip_tags($_GET['id']);
 	$proses->hapus_data($tabel, $where, $id);
-	header('location: '.$abs . '/backend/pages/index.php?page=products');
+	header('location: '.$abs . '/backend/pages/index.php?page=products&msg=delete-success');
 }

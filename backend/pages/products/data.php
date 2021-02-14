@@ -40,7 +40,7 @@ foreach ($query	as $value) {
 		<i class=\"fas fa-pencil-alt\">
 		</i>
 	</a>
-	<a onclick=\"return confirm('Apakah yakin data akan di hapus?')\" href=\"" . $abs . "/backend/pages/products/crud.php?aksi=hapus&id=" . $value->id . "\" class=\"btn btn-danger btn-sm\">
+	<a onclick=\"return confirm('Apakah yakin data akan di hapus?')\" href=\"" . $abs . "/backend/pages/products/crud.php?act=hapus&id=" . $value->id . "\" class=\"btn btn-danger btn-sm\">
 		<i class=\"fas fa-trash\">
 		</i>
 	</a>";
