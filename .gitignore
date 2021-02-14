@@ -1,3 +1,4 @@
 node_modules
 admin-lte
 /vendor/
+/lib/html2pdf/
